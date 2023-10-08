@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --primary-color: #1B9AAA;
+    --text-color: #050505;
+    --light-color: #DFE1E8;
+    --dark-color: #64696A;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3{
+    font-family: 'Montserrat';
+}
+
+p, div, label, a{
+    font-family: 'Roboto';
+}
+
+
+a{
+    color: var(--primary-color);
+}
+
+input{
+    padding: 0.75rem !important;
+}

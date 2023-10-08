@@ -1,0 +1,42 @@
+<body class="page-content">
+
+    <div class="login-container">
+
+        <div class="left-container">
+            <img src="../../../assets/images/login-banner.png" class="img-fluid" alt="...">
+        </div>
+
+        <div class="right-container">
+
+            <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+
+            <p>¿No tienes cuenta? <a href="register">Regístrate</a></p>
+
+            <form (ngSubmit)="login()" [formGroup]="formItem">
+
+                <label>Usuario</label>
+
+                <div class="form-floating">
+                    <input type="text" class="form-control" formControlName="username" [(ngModel)]="userData.username"
+                        required>
+                    <label for="floatingInput"></label>
+                </div>
+
+                <label>Contraseña</label>
+
+                <div class="form-floating">
+                    <input type="password" class="form-control" formControlName="password"
+                        [(ngModel)]="userData.password"  required>
+                    <label for="floatingPassword"></label>
+                </div>
+
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formItem.invalid">Iniciar Sesión</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
