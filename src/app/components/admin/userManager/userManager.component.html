@@ -1,3 +1,32 @@
-<p>
-  userManager works!
-</p>
+<div class="container-fluid">
+
+  <h1>Gestión de usuarios</h1>
+
+  <div class="responsive-table">
+    <div class="row table-header">
+      <div class="col table-header-content">ID</div>
+      <div class="col table-header-content">Nombre</div>
+      <div class="col table-header-content">Email</div>
+      <div class="col table-header-content">Contraseña</div>
+      <div class="col table-header-content">Rol</div>
+      <div class="col table-header-content">Fecha de creación</div>
+      <div class="col table-header-content">Ultimo Login</div>
+    </div>
+    <div class="row table-body" *ngFor="let user of userList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+      <div class="col table-body-content" [attr.data-th]="'ID'">{{user['id']}}</div>
+      <div class="col table-body-content" [attr.data-th]="'Nombre'">{{user['name']}}</div>
+      <div class="col table-body-content" [attr.data-th]="'Email'">{{user['email']}}</div>
+      <div class="col table-body-content" [attr.data-th]="'Contraseña'">{{user['password']}}</div>
+      <div class="col table-body-content" [attr.data-th]="'Rol'">{{user['rol']}}</div>
+      <div class="col table-body-content" [attr.data-th]="'Fecha de creación'">{{user['creation_date']}}</div>
+      <div class="col table-body-content" [attr.data-th]="'Ultimo Login'">{{user['last_login']}}</div>
+
+      <div class="row table-body-content" *ngIf="userList['length'] === 0">
+        <div class="col">No hay ordenes de compra</div>
+      </div>
+
+    </div>
+    <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]="true" [hidePageSize]="true" aria-label="Select page">
+    </mat-paginator>
+  </div>

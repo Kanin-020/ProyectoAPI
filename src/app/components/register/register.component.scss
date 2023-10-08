@@ -15,7 +15,7 @@
     align-items: center;
     width: 75vw;
     height: 70vh;
-    background-color: white;
+    background-color: var(--clear-color);
     border-radius: 1rem;
 }
 
@@ -49,10 +49,6 @@
         flex-direction: column;
         gap: 1rem;
 
-        button {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
     }
 
 }

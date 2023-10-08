@@ -1,0 +1,20 @@
+[
+    {
+        "id": "265152",
+        "name": "Jesus",
+        "email": "correo",
+        "password": "*****",
+        "rol": "usuario",
+        "creation_date": "12/21/12",
+        "last_login": "12/21/12"
+    },
+    {
+        "id": "265152",
+        "name": "Charlie",
+        "email": "correo",
+        "password": "*****",
+        "rol": "admin",
+        "creation_date": "12/21/12",
+        "last_login": "12/21/12"
+    }
+]
