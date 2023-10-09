@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LineChartModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-landpage',
