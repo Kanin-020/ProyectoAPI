@@ -14,6 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LandpageComponent } from './components/admin/landpage/landpage.component';
 import { UserManagerComponent } from './components/admin/userManager/userManager.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { HeaderComponent } from './partials/header/header.component';
+import { FooterComponent } from './partials/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     RegisterComponent,
     LandpageComponent,
-    UserManagerComponent
+    UserManagerComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
