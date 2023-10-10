@@ -1,0 +1,77 @@
+.container-fluid {
+    width: auto;
+    height: 100vh;
+    margin: 0rem 2rem;
+}
+
+.responsive-table{
+    margin: 1rem;
+}
+
+.table-header {
+    background: var(--light-color);
+
+}
+
+.table-body-content {
+    border: 1px solid var(--light-color);
+}
+
+//Disposición de celular
+@media screen and (max-width: 39.9375em) and (orientation: portrait) {
+
+    .responsive-table{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .table-header {
+        display: none;
+    }
+
+    .table-body {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--light-color);
+        border-radius: 10px;
+        gap: 0.5rem;
+
+        .table-body-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100% !important;
+            border-right: none !important;
+            text-align: center;
+            border: none;
+        }
+
+        .table-options {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 1.5rem 0rem;
+            padding: 1rem;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -1rem;
+                left: 0px;
+                width: 100%;
+                height: 1px;
+                background-color: var(--ion-text-color);
+            }
+
+        }
+
+        .table-body-content:before {
+            content: attr(data-th);
+        }
+
+    }
+
+
+}

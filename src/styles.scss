@@ -1,11 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
+    //Color
     --primary-color: #1B9AAA;
     --text-color: #050505;
     --light-color: #DFE1E8;
     --dark-color: #64696A;
     --clear-color: #FFF;
+
+    //Font weight
+    //Montserrat { 300, 400, 600 }
+    //Roboto { 300, 400, 500 }
+    --thin-weight: 300;
+    --regular-weight: 400;
+    --medium-weight: 500;
+    --semi-bold-weight: 600;
+
 }
 
 body {
@@ -15,19 +25,38 @@ body {
     padding: 0;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
     font-family: 'Montserrat';
+    font-weight: var(--semi-bold-weight);
 }
 
-p, div, label, a{
+p,
+div,
+label,
+a {
     font-family: 'Roboto';
 }
 
+p{
+    margin: initial;
+}
 
-a{
+a {
     color: var(--primary-color);
 }
 
-input{
+input {
     padding: 0.75rem !important;
+}
+
+mat-paginator{
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
