@@ -1,1 +1,12 @@
-
+.navbar{
+    background-color: var(--primary-color); 
+}
+.empty-frame{
+    min-height:10vh;
+}
+.nav-link{
+    color: var(--light-color);
+}
+.navbar-toggler{
+    background-color: var(--light-color);
+}
