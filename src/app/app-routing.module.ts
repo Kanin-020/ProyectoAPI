@@ -6,7 +6,7 @@ import { ActivityManagerComponent } from './components/admin/activityManager/act
 import { LandpageComponent } from './components/admin/landpage/landpage.component';
 import { UserManagerComponent } from './components/admin/userManager/userManager.component';
 import { SupportComponent } from './components/user/support/support.component';
-
+import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 
 
 const routes: Routes = [
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'admin-landpage', component: LandpageComponent},
   { path: 'user-manager', component: UserManagerComponent},
   { path: 'support', component: SupportComponent},
+  { path: 'user-records', component: TaskManagerComponent},
   { path: '**', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto para manejar rutas no encontradas
 ];
 

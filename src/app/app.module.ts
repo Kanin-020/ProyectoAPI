@@ -18,6 +18,7 @@ import { SupportComponent } from './components/user/support/support.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './partials/footer/footer.component';
     UserManagerComponent,
     SupportComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TaskManagerComponent
   ],
   imports: [
     BrowserModule,
