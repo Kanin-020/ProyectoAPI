@@ -1,6 +1,4 @@
-<app-header></app-header>
 <div class="container-fluid">
-
   <div class="row">
     <div class="col">
       <h1>Gestión de usuarios</h1>
@@ -40,12 +38,12 @@
           <div class="col table-body-content" [attr.data-th]="'Ultimo Login'">{{user['last_login']}}</div>
 
           <div class="row table-body-content" *ngIf="userList['length'] === 0">
-            <div class="col">No hay ordenes de compra</div>
+            <div class="col">No existen usuarios</div>
           </div>
 
         </div>
         <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
-          [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]="true" [hidePageSize]="true"
+          [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
           aria-label="Select page">
         </mat-paginator>
       </div>
@@ -53,4 +51,3 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>

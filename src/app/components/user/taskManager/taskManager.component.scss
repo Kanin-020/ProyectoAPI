@@ -1,0 +1,23 @@
+.container-fluid {
+    width: auto;
+    min-height:80vh;
+    margin: 0rem 2rem;  
+}
+
+.date-box{
+    .separator{
+        border-top: var(--dark-color);
+    }
+}
+
+.responsive-table{
+    margin: 1rem;
+}
+
+.table-header {
+    background: var(--light-color);
+}
+
+.table-body-content {
+    border: 1px solid var(--light-color);
+}
