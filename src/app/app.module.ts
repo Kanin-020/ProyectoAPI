@@ -16,6 +16,7 @@ import { UserManagerComponent } from './components/admin/userManager/userManager
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FooterComponent } from './partials/footer/footer.component';
     LandpageComponent,
     UserManagerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TaskManagerComponent
   ],
   imports: [
     BrowserModule,
