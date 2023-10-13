@@ -60,3 +60,7 @@ mat-paginator{
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
 }
+
+.cdk-overlay-container {
+    display: none !important;
+}

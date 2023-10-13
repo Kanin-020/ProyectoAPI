@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LandpageComponent } from './landpage.component';
+import { AdminLandpageComponent } from './adminLandpage.component';
 
-describe('LandpageComponent', () => {
-  let component: LandpageComponent;
-  let fixture: ComponentFixture<LandpageComponent>;
+describe('AdminLandpageComponent', () => {
+  let component: AdminLandpageComponent;
+  let fixture: ComponentFixture<AdminLandpageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandpageComponent ]
+      declarations: [ AdminLandpageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LandpageComponent);
+    fixture = TestBed.createComponent(AdminLandpageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
