@@ -1,8 +1,6 @@
-.navbar{
-    background-color: var(--primary-color); 
-}
-.empty-frame{
+.empty-frame, .navbar {
     min-height:10vh;
+    background-color: var(--primary-color); 
 }
 .nav-link{
     color: var(--light-color);

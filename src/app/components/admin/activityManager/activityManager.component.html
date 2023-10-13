@@ -1,3 +1,59 @@
-<p>
-  activityManager works!
-</p>
+<div class="container-fluid">
+  <div class="row mt-2">
+    <div class="col">
+      <h1>Registro de actividades</h1>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="input-group">
+        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="20" height="20"></i-bs></span>
+        <input type="text" class="form-control" placeholder="Nombre">
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Fecha de inicio">
+        <span class="arrow-icon input-group-text " id="basic-addon1"><i-bs name="arrow-right-short" width="30" height="30"></i-bs></span>
+        <input type="text" class="form-control" placeholder="Fecha de fin">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+      <div class="responsive-table">
+        <div class="row table-header">
+          <div class="col table-header-content">ID</div>
+          <div class="col table-header-content">Nombre</div>
+          <div class="col table-header-content">Descripción</div>
+          <div class="col table-header-content">Fecha de entrega</div>
+          <div class="col table-header-content">Estado</div>
+        </div>
+        <div class="row table-body"
+          *ngFor="let activity of activityList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+          <div class="col table-body-content" [attr.data-th]="'ID'">{{activity['id']}}</div>
+          <div class="col table-body-content" [attr.data-th]="'Nombre'">{{activity['name']}}</div>
+          <div class="col table-body-content" [attr.data-th]="'Descripción'">{{activity['description']}}</div>
+          <div class="col table-body-content" [attr.data-th]="'Fecha de entrega'">{{activity['deadline']}}</div>
+          <div class="col table-body-content" [attr.data-th]="'Estado'">{{activity['status']}}</div>
+
+          <div class="row table-body-content" *ngIf="activityList['length'] === 0">
+            <div class="col">No existen tareas asociadas a este proyecto.</div>
+          </div>
+
+        </div>
+        <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
+          [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
+          aria-label="Select page">
+        </mat-paginator>
+      </div>
+
+    </div>
+  </div>
+</div>
