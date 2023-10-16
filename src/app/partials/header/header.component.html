@@ -1,3 +1,63 @@
-<p>
-  header works!
-</p>
+<div class="empty-frame"></div>
+<nav class="navbar navbar-light fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-brand col-md-1 d-flex align-items-center justify-content-center">
+      <img src="../../../assets/images/Company-Logo.svg" class="img-fluid" alt="" width="114" height="39">
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"  aria-expanded="false" >
+      HUB <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USER NAME</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/user-landpage">Inicio</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/taskManager">Tareas</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/resourses">Recursos</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/support">Soporte</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cuenta
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/data-config">Perfil</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/data-config">Preferencias</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

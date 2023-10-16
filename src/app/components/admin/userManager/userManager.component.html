@@ -1,16 +1,14 @@
-<app-header></app-header>
 <div class="container-fluid">
-
-  <div class="row">
+  <div class="row px-2">
     <div class="col">
       <h1>Gestión de usuarios</h1>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <span class="input-group-text " id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></span>
+        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></span>
         <input type="text" class="form-control" placeholder="Buscar productos">
       </div>
     </div>
@@ -40,12 +38,12 @@
           <div class="col table-body-content" [attr.data-th]="'Ultimo Login'">{{user['last_login']}}</div>
 
           <div class="row table-body-content" *ngIf="userList['length'] === 0">
-            <div class="col">No hay ordenes de compra</div>
+            <div class="col">No existen usuarios</div>
           </div>
 
         </div>
         <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
-          [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]="true" [hidePageSize]="true"
+          [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
           aria-label="Select page">
         </mat-paginator>
       </div>
@@ -53,4 +51,3 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>

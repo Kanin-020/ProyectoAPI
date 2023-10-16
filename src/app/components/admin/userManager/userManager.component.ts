@@ -20,7 +20,6 @@ export class UserManagerComponent implements OnInit {
 
   constructor() { }
 
-
   ngOnInit() {
 
     this.userList = (userListJSON as any).default;

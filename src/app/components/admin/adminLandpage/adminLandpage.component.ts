@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-landpage',
-  templateUrl: './landpage.component.html',
-  styleUrls: ['./landpage.component.scss']
+  templateUrl: './adminLandpage.component.html',
+  styleUrls: ['./adminLandpage.component.scss']
 })
-export class LandpageComponent implements OnInit {
+export class AdminLandpageComponent implements OnInit {
 
   constructor() { }
 
