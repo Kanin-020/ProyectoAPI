@@ -20,6 +20,8 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 import { UserLandpageComponent } from './components/user/userLandpage/userLandpage.component';
+import { SessionGuard } from './guards/session.guard';
+import { RoleGuard } from './guards/role.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { UserLandpageComponent } from './components/user/userLandpage/userLandpa
     NgxPaginationModule,
     NgxBootstrapIconsModule.pick(allIcons)
   ],
-  providers: [],
+  providers: [SessionGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

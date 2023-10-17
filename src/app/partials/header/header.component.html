@@ -1,21 +1,23 @@
-<div class="empty-frame"></div>
-<nav class="navbar navbar-light fixed-top">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <div class="navbar-brand col-md-1 d-flex align-items-center justify-content-center">
+  <div class="navbar-brand col-md-1 d-flex align-items-center justify-content-center">
+    <a class="navbar-brand" href="#">
       <img src="../../../assets/images/Company-Logo.svg" class="img-fluid" alt="" width="114" height="39">
-    </div>
+    </a>
+  </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"  aria-expanded="false" >
-      HUB <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USER NAME</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/user-landpage">Inicio</a>
           </li>
@@ -56,8 +58,36 @@
               <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
             </ul>
           </li>
+
         </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button type="button" class="btn btn-lg btn-primary"><i-bs name="gear-fill" width="30" height="20"></i-bs></button>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-lg btn-primary"><i-bs name="bell-fill" width="30" height="20"></i-bs></button>
+
+          </li>
+          <li>
+            <button type="button" class="btn btn-lg btn-primary"><i-bs name="person-circle" width="30" height="20"></i-bs></button>
+
+          </li>
+
+        </ul>
+
+
+
       </div>
     </div>
-  </div>
+    <!-- <div class="profile-item">
+      <button type="button" class="btn btn-lg btn-primary"><i-bs name="gear-fill" width="30" height="20"></i-bs></button>
+      <button type="button" class="btn btn-lg btn-primary"><i-bs name="bell-fill" width="30" height="20"></i-bs></button>
+      <button type="button" class="btn btn-lg btn-primary"><i-bs name="person-circle" width="30" height="20"></i-bs></button>
+    </div> -->
+
 </nav>
+
