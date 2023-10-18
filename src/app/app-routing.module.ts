@@ -9,6 +9,7 @@ import { UserManagerComponent } from './components/admin/userManager/userManager
 import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 import { SupportComponent } from './components/user/support/support.component';
 import { UserLandpageComponent } from './components/user/userLandpage/userLandpage.component';
+import { TaskItemComponent } from './partials/task-item/task-item.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'user-landpage', component: UserLandpageComponent },
   { path: 'user-task-manager', component: TaskManagerComponent },
   { path: 'user-support', component: SupportComponent },
+  { path: 'task-item', component: TaskItemComponent},
   { path: '**', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto para manejar rutas no encontradas
 ];
 

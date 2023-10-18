@@ -4,27 +4,31 @@
         "titulo": "Incredible Granite Salad",
         "descripcion": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
         "fecha-de-entrega": "2012-04-21",
-        "proyecto": "Sports"
+        "proyecto": "Sports",
+        "deadline" : "15:00"
       },
       {
         "status": "entregado",
         "titulo": "Rustic Fresh Shoes",
         "descripcion": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
         "fecha-de-entrega": "2012-04-21",
-        "proyecto": "Clothing"
+        "proyecto": "Clothing",
+        "deadline" : "15:00"
       },
       {
         "status": "entregado",
         "titulo": "Small Rubber Keyboard",
         "descripcion": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
         "fecha-de-entrega": "2012-04-21",
-        "proyecto": "Kids"
+        "proyecto": "Kids",
+        "deadline" : "15:00"
       },
       {
         "status": "entregado",
         "titulo": "Electronic Frozen Pants",
         "descripcion": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
         "fecha-de-entrega": "2012-04-21",
-        "proyecto": "Jewelery"
+        "proyecto": "Jewelery",
+        "deadline" : "15:00"
       }
 ]

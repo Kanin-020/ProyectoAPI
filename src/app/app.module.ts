@@ -20,6 +20,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 import { UserLandpageComponent } from './components/user/userLandpage/userLandpage.component';
+import { TaskItemComponent } from './partials/task-item/task-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserLandpageComponent } from './components/user/userLandpage/userLandpa
     SupportComponent,
     HeaderComponent,
     FooterComponent,
-    TaskManagerComponent
+    TaskManagerComponent,
+    TaskItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+h4{
+    color: var(--primary-color);
+}
+
+.task-frame{
+    border: 1px solid var(--dark-color);
+}
+
+.task-container{
+    margin-top: 21px;
+    margin-right: 21px;
+    margin-bottom: 21px;
+    margin-left: 21px;
+    li{
+        list-style-type: none;
+    }
+}
+
+.task-title{
+    h5{
+        color: var(--primary-color);
+        padding: 10px;
+    }
+}
+

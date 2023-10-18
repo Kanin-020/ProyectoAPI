@@ -45,11 +45,6 @@ export class TaskManagerComponent implements OnInit {
     return today;
   }
 
-  // convertStringToDate(stringsToConvert: string[]): Date{
-  //   return new Date(stringsToConvert[0], stringsToConvert[1], stringsToConvert[2]);
-  // }
-
-
   getMinimunDate(stringDates: String[]): String{
     let dates: any[] = [];
     let minimunDate!: Date;
@@ -66,6 +61,12 @@ export class TaskManagerComponent implements OnInit {
   }
 
 
+  closeInformation(){
+    let modalInforDiv = document.getElementById("infoModal");
+    if(modalInforDiv !== null){
+      modalInforDiv.style.display = 'none';
+    }
+  }
 
 }
 
