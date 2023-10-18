@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin-landpage', canActivate: [SessionGuard, RoleGuard] ,component: AdminLandpageComponent },
+  { path: 'admin-landpage', canActivate: [SessionGuard, RoleGuard], component: AdminLandpageComponent },
   { path: 'admin-activity-manager', canActivate: [SessionGuard, RoleGuard], component: ActivityManagerComponent },
   { path: 'admin-user-manager', canActivate: [SessionGuard, RoleGuard], component: UserManagerComponent },
   { path: 'user-landpage', canActivate: [SessionGuard, RoleGuard], component: UserLandpageComponent },

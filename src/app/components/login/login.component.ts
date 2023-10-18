@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
     if (username && password == 123) {
       localStorage.setItem('token', 'token');
       localStorage.setItem('secretKey', 'secretKey');
-      localStorage.setItem('role', 'user');
+      localStorage.setItem('role', 'admin');
+
+      console.log(localStorage.getItem('role'));
 
       if (localStorage.getItem('role') == 'user') {
         this.router.navigate(['user-landpage']);
