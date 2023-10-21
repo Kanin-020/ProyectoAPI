@@ -1,0 +1,77 @@
+<div class="container-fluid pt-2">
+    <div class="row px-2">
+      <div class="col">
+        <h1>Creación de actividades</h1>
+      </div>
+    </div>
+  
+    <div class="activity-container rounded">
+        <div class="row main-row">
+            <div class="big-col col-4 py-4">
+                <div class="bordered-container border-primary border-lg rounded m-2">
+                    <div class="form-group bordered-container rounded">
+                        <p><strong>Nombre</strong></p>
+                        <textarea class="form-control" id="task-name" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="bordered-container rounded m-2">
+                    <div class="form-group bordered-container rounded">
+                        <p><strong>Descripción</strong></p>
+                      <textarea class="form-control" id="task-description" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="bordered-container rounded m-2">
+                    <div class="form-group bordered-container rounded">
+                      <p><strong>Fecha de revisión</strong></p>
+                      <input type="date" id="start-date" name="start-date">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-1"></div>
+
+            <div class="big-col col-4 py-4">
+                <div class="bordered-container rounded object-fit-cover p-2">
+                    <div class="form-group bordered-container rounded">
+                        <p><strong>Asignación de tareas</strong></p>
+                        <div class="row">
+                            <div class="col-8">
+                                <select id="Select" class="form-select">
+                                    <option>Option A</option>
+                                    <option>Option B</option>
+                                    <option>Option C</option>
+                                    <option>Option D</option>
+                                </select>
+ 
+                            </div>
+                            <div class="col-1">
+                                <button class="btn btn-sm p-2" type="button" >
+                                  +
+                                </button>
+                            </div>
+                        </div> 
+
+                        <div class="my-custom-scrollbar mt-2">
+                            <div class="border-bottom row mt-2 mb-0">
+                                <div class="col-8">
+                                    Opción x
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-sm p-2" type="button" >
+                                    -
+                                  </button>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="big-col col-2 py-4">
+                <button class="btn btn-lg btn-primary" type="button" >
+                  Agregar tarea
+                </button>
+            </div>
+        </div>
+    </div>
+  
+  </div>
