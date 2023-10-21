@@ -19,11 +19,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
+    localStorage.removeItem('token');
+    localStorage.removeItem('secretKey');
+    localStorage.removeItem('role');
+
     this.formItem = new FormGroup({
       username: new FormControl(this.userData.username, Validators.required),
       password: new FormControl(this.userData.password, Validators.required),
     });
-
 
   }
 
@@ -35,15 +38,19 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', 'token');
       localStorage.setItem('secretKey', 'secretKey');
       localStorage.setItem('role', 'admin');
+    }
 
-      console.log(localStorage.getItem('role'));
+    if (username && password == 456) {
+      localStorage.setItem('token', 'token');
+      localStorage.setItem('secretKey', 'secretKey');
+      localStorage.setItem('role', 'user');
+    }
 
-      if (localStorage.getItem('role') == 'user') {
-        this.router.navigate(['user-landpage']);
-      } else if (localStorage.getItem('role') == 'admin') {
-        this.router.navigate(['admin-landpage']);
-      }
 
+    if (localStorage.getItem('role') == 'user') {
+      this.router.navigate(['user-landpage']);
+    } else if (localStorage.getItem('role') == 'admin') {
+      this.router.navigate(['admin-landpage']);
     }
 
     //TODO Real component

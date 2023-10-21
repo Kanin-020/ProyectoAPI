@@ -16,8 +16,18 @@ export class RoleGuard implements CanActivate {
 
         // Define las rutas permitidas para cada rol
         const allowedRoutesByRole: AllowedRoutes = {
-            'admin': ['admin-landpage', 'admin-activity-manager', 'admin-user-manager'],
-            'user': ['user-landpage', 'user-task-manager', 'user-support'],
+            'admin': [
+                'admin-landpage',
+                'admin-activity-creator',
+                'admin-activity-modifier',
+                'admin-activity-manager',
+                'admin-user-manager',
+            ],
+            'user': [
+                'user-landpage',
+                'user-task-manager',
+                'user-support'
+            ],
         };
 
         // Verifica si el rol actual tiene acceso a la ruta actual

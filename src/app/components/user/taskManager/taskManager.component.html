@@ -9,50 +9,52 @@
     <div class="row">
       <div class="col">
         <label for="start-date">Start date</label>
-        <input type="date" id="start-date" placeholder="{{getMinimumDate(getDates())}}" min ="{{getMinimumDate(getDates())}}" max="{{getTodaysDate()}}" name="start-date">
+        <input type="date" id="start-date" placeholder="{{getMinimumDate(getDates())}}"
+          min="{{getMinimumDate(getDates())}}" max="{{getTodaysDate()}}" name="start-date">
       </div>
       <div class="col">
-        <img src="../../../../assets/images/arrow-right.svg"  class="img-fluid">
+        <img src="../../../../assets/images/arrow-right.svg" class="img-fluid">
       </div>
       <div class="col">
         <label for="end-Date">End date</label>
-        <input type="date" id="end-Date" name="end-Date" min ="{{getMinimumDate(getDates())}}" max="{{getTodaysDate()}}">
+        <input type="date" id="end-Date" name="end-Date" min="{{getMinimumDate(getDates())}}" max="{{getTodaysDate()}}">
       </div>
     </div>
-
     <hr class="separator">
   </div>
 
   <div class="row">
     <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Descripción de tarea</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Proyecto</th>
+          </tr>
+        </thead>
 
-      <div class="responsive-table">
-        <div class="row table-header">
-          <div class="col table-header-content">Titulo</div>
-          <div class="col table-header-content">Descripción de tarea</div>
-          <div class="col table-header-content">Fecha de entrega</div>
-          <div class="col table-header-content">Estado</div>
-          <div class="col table-header-content">Proyecto</div>
-        </div>
-        <div class="row table-body"
-          *ngFor="let task of taskList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
-          <div class="col table-body-content" [attr.data-th]="'Titulo'">{{task['titulo']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Descripcion'">{{task['descripcion']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Fecha de entrega'">{{task['fecha-de-entrega']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Estado'">{{task['status']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Proyecto'">{{task['proyecto']}}</div>
-          <div class="row table-body-content" *ngIf="taskList['length'] === 0">
-            <div class="col">No existen usuarios</div>
-          </div>
+        <tbody>
+          <tr *ngFor="let task of taskList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            <td>{{task['titulo']}}</td>
+            <td>{{task['descripcion']}}</td>
+            <td>{{task['fecha-de-entrega']}}</td>
+            <td>{{task['status']}}</td>
+            <td>{{task['proyecto']}}</td>
+          </tr>
 
-        </div>
-        <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
-          [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
-          aria-label="Select page">
-        </mat-paginator>
-      </div>
+          <tr *ngIf="taskList['length'] === 0">
+            <td colspan="5">No existen tareas asociadas a este proyecto.</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
+        [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true" aria-label="Select page">
+      </mat-paginator>
 
     </div>
-
+  </div>
 </div>
-

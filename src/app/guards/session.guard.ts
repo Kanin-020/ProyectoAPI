@@ -23,6 +23,10 @@ export class SessionGuard implements CanActivate {
 
     logout(): void {
         localStorage.removeItem('token');
+        localStorage.removeItem('secretKey');
+        localStorage.removeItem('role');
+
         this.router.navigate(['/login']);
     }
+
 }

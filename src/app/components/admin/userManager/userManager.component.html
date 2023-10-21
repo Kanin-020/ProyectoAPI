@@ -8,7 +8,8 @@
   <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></span>
+        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="75"
+            height="20"></i-bs></span>
         <input type="text" class="form-control" placeholder="Buscar productos">
       </div>
     </div>
@@ -16,37 +17,43 @@
 
   <div class="row">
     <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Último login</th>
+          </tr>
+        </thead>
 
-      <div class="responsive-table">
-        <div class="row table-header">
-          <div class="col table-header-content">ID</div>
-          <div class="col table-header-content">Nombre</div>
-          <div class="col table-header-content">Email</div>
-          <div class="col table-header-content">Contraseña</div>
-          <div class="col table-header-content">Rol</div>
-          <div class="col table-header-content">Fecha de creación</div>
-          <div class="col table-header-content">Ultimo Login</div>
-        </div>
-        <div class="row table-body"
-          *ngFor="let user of userList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
-          <div class="col table-body-content" [attr.data-th]="'ID'">{{user['id']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Nombre'">{{user['name']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Email'">{{user['email']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Contraseña'">{{user['password']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Rol'">{{user['rol']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Fecha de creación'">{{user['creation_date']}}</div>
-          <div class="col table-body-content" [attr.data-th]="'Ultimo Login'">{{user['last_login']}}</div>
+        <tbody>
+          <tr
+            *ngFor="let user of userList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            <td>{{user['id']}}</td>
+            <td>{{user['name']}}</td>
+            <td>{{user['email']}}</td>
+            <td>{{user['password']}}</td>
+            <td>{{user['rol']}}</td>
+            <td>{{user['creation_date']}}</td>
+            <td>{{user['last_login']}}</td>
+          </tr>
 
-          <div class="row table-body-content" *ngIf="userList['length'] === 0">
-            <div class="col">No existen usuarios</div>
-          </div>
+          <tr *ngIf="userList['length'] === 0">
+            <td colspan="5">No existen usuarios asociados a este proyecto.</td>
+          </tr>
 
-        </div>
-        <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
-          [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
-          aria-label="Select page">
-        </mat-paginator>
-      </div>
+        </tbody>
+
+      </table>
+
+      <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length"
+        [pageSize]="page.pageSize" [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
+        aria-label="Select page">
+      </mat-paginator>
 
     </div>
   </div>

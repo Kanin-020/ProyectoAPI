@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="container my-2">
       <div class="d-flex justify-content-between align-items-center">
         <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="container my-2">
       <div class="d-flex justify-content-between align-items-center">
         <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="container my-2">
       <div class="d-flex justify-content-between align-items-center">
         <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
@@ -84,9 +84,9 @@
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4"><strong>Envíe su duda y nuestro equipo de soporte se pondrá en contacto con usted mediante su correo electrónico.</strong></p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" aria-label="Search">
-          <button class="btn btn-primary" type="submit">Enviar</button>
+        <form class="d-flex" role="search" (ngSubmit)="callMailService()" [formGroup]="formItem">
+          <input class="form-control me-2" type="search" aria-label="Search" [(ngModel)]="sendRequest" required>
+          <button class="btn btn-primary" type="submit" [disabled]="formItem.invalid">Enviar</button>
         </form>
       </div>
       <p><small>Recibirá un correo de respuesta en el plazo de una semana, si no recive respuesta, comuniquese al correo "placeholder@correo.com".</small></p>

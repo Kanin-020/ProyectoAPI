@@ -26,6 +26,8 @@ export class TaskManagerComponent implements OnInit {
   ngOnInit() {
     this.taskList = (userListJSON as any).default;
     this.page.length = this.taskList.length;
+
+    console.log(this.taskList.length);
     this.getMinimumDate(this.getDates());
   }
 
@@ -68,13 +70,6 @@ export class TaskManagerComponent implements OnInit {
     return minimumDate.toISOString().split('T')[0];
   }
 
-
-  closeInformation(){
-    let modalInforDiv = document.getElementById("infoModal");
-    if(modalInforDiv !== null){
-      modalInforDiv.style.display = 'none';
-    }
-  }
 
 }
 
