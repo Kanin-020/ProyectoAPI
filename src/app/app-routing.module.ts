@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'user-task-manager', canActivate: [SessionGuard, RoleGuard], component: TaskManagerComponent },
   { path: 'user-support', canActivate: [SessionGuard, RoleGuard], component: SupportComponent },
   { path: 'user-aboutUs', component: AboutUsComponent },
+
   { path: '**', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto para manejar rutas no encontradas
 ];
 

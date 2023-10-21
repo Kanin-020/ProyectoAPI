@@ -1,3 +1,20 @@
-<p>
-  landpage works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col align-items-center text-center">
+      <h1>Bienvenido usuario</h1> <!--aqui se obtendrá el nombre de la cuenta del usuario -->
+      <h4>Actividades asignadas</h4>
+    </div>
+  </div>  
+  <div class="container task-frame">
+    <div class="row task-title">
+      <h5>Linea del tiempo</h5>
+    </div>
+    <div class="row task-container">
+      <ul>
+        <li *ngFor="let item of itemList">
+          <app-task-item [taskItem]="item"></app-task-item >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

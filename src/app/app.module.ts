@@ -22,9 +22,11 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 import { AboutUsComponent } from './components/scrap/aboutUs/aboutUs.component';
 import { UserLandpageComponent } from './components/user/userLandpage/userLandpage.component';
+import { TaskItemComponent } from './partials/task-item/task-item.component';
 import { SessionGuard } from './guards/session.guard';
 import { RoleGuard } from './guards/role.guard';
 import { ProjectItemComponent } from './partials/projectItem/projectItem.component';
+
 
 import { EmailService } from './services/email.service';
 @NgModule({
@@ -41,6 +43,7 @@ import { EmailService } from './services/email.service';
     HeaderComponent,
     FooterComponent,
     TaskManagerComponent,
+    TaskItemComponent
     AboutUsComponent,
     ProjectItemComponent
 
