@@ -1,10 +1,25 @@
-.empty-frame, .navbar {
-    min-height:10vh;
-    background-color: var(--primary-color); 
+.navbar {
+    min-height: 10vh !important;
+    background-color: var(--primary-color) !important;
+    padding: 0rem 1rem !important;
 }
-.nav-link{
-    color: var(--light-color);
+
+.nav-link {
+    color: var(--light-color) !important;
 }
-.navbar-toggler{
-    background-color: var(--light-color);
+
+.navbar-toggler {
+    background-color: var(--light-color) !important;
+}
+
+.offcanvas-body {
+    justify-content: space-between !important;
+}
+
+.navbar-nav {
+    align-items: center !important;
+}
+
+#navbarSupportedContent {
+    justify-content: space-between;
 }
