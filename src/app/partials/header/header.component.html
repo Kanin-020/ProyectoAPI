@@ -16,7 +16,7 @@
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USER NAME</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body">
+      <div class="offcanvas-body" *ngIf="userRole">
 
         <ul class="navbar-nav" *ngIf="userRole === 'admin'">
           <li class="nav-item">
@@ -33,11 +33,11 @@
               Cuenta
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/">Perfil</a></li>
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="/login">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" (click)="closeSession()">Cerrar sesión</a></li>
             </ul>
           </li>
         </ul>
@@ -57,7 +57,7 @@
               Cuenta
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/">Perfil</a></li>
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
