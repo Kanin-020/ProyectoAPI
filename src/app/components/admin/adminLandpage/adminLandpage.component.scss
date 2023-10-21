@@ -1,15 +1,32 @@
+h3{
+    color: var(--primary-color);
+}
+
 .container-fluid{
     width: auto;
     min-width: 80vh;
     margin: 0rem 2rem;
 }
 
-h3{
-    color: var(--primary-color);
+.row{
+    margin: 2rem 0rem;
 }
 
 .content{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.project-list{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.project-list-item{
+    width: fit-content;
 }

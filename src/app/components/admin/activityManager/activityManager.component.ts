@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { SessionGuard } from 'src/app/guards/session.guard';
 import * as activityListJSON from "src/assets/json/activitySample.json";
 
 @Component({
   selector: 'app-activityManager',
   templateUrl: './activityManager.component.html',
-  styleUrls: ['./activityManager.component.scss']
+  styleUrls: ['./activityManager.component.scss'],
+  providers: [SessionGuard]
 })
 export class ActivityManagerComponent implements OnInit {
 

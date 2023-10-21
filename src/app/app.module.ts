@@ -21,6 +21,10 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { TaskManagerComponent } from './components/user/taskManager/taskManager.component';
 import { AboutUsComponent } from './components/scrap/aboutUs/aboutUs.component';
+import { UserLandpageComponent } from './components/user/userLandpage/userLandpage.component';
+import { SessionGuard } from './guards/session.guard';
+import { RoleGuard } from './guards/role.guard';
+import { ProjectItemComponent } from './partials/projectItem/projectItem.component';
 
 import { EmailService } from './services/email.service';
 @NgModule({
@@ -38,6 +42,8 @@ import { EmailService } from './services/email.service';
     FooterComponent,
     TaskManagerComponent,
     AboutUsComponent,
+    ProjectItemComponent
+
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,7 @@ import { EmailService } from './services/email.service';
     NgxPaginationModule,
     NgxBootstrapIconsModule.pick(allIcons)
   ],
-  providers: [EmailService],
+  providers: [SessionGuard, RoleGuard, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
