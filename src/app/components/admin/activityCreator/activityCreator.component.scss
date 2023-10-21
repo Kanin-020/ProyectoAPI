@@ -1,0 +1,59 @@
+.container-fluid {
+    width: auto;
+    min-height:80vh;
+    margin: 0rem 2rem;  
+}
+
+.activity-container {
+    background-color: var(--light-color);
+    margin: 0rem 2rem;  
+}
+
+.bordered-container{
+    border-color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+input, textarea, .btn-sm{
+    border-color: var(--dark-color);
+    background-color: var(--dark-color);
+    color: var(--clear-color)
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 275px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+    display: block;
+}
+
+.col-2 {
+    top: 0;
+    position: relative;
+    text-align: center;
+}
+
+.btn-lg{
+    width: 100%;
+}
+
+//Disposición de celular
+@media screen and (max-width: 39.9375em) and (orientation: portrait) {
+
+    .activity-container{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .main-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .big-col{
+            width: 100% !important;
+        }
+    }
+}

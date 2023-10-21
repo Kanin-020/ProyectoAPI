@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { SessionGuard } from 'src/app/guards/session.guard';
 import * as userListJSON from "src/assets/json/taskSample.json";
 
 
 @Component({
   selector: 'app-taskManager',
   templateUrl: './taskManager.component.html',
-  styleUrls: ['./taskManager.component.scss']
+  styleUrls: ['./taskManager.component.scss'],
+  providers: [SessionGuard]
 })
 export class TaskManagerComponent implements OnInit {
   protected taskList: any[] = [];
@@ -24,40 +26,46 @@ export class TaskManagerComponent implements OnInit {
   ngOnInit() {
     this.taskList = (userListJSON as any).default;
     this.page.length = this.taskList.length;
-    this.getMinimunDate(this.getDates());
+    this.getMinimumDate(this.getDates());
   }
 
-  getDates(): String[]{
+  getDates(): String[] {
     let stringDates: String[] = new Array<String>;
-    this.taskList.forEach(function(task){
+    this.taskList.forEach(function (task) {
       stringDates.push(task['fecha-de-entrega']);
     })
 
-    stringDates.forEach(function(strigs){
-      console.log("String que se les hizo push" + strigs);
+    stringDates.forEach(function (strings) {
+      console.log("String que se les hizo push" + strings);
     })
     return stringDates;
   }
 
-  getTodaysDate():string{
-    let today:string = new Date().toISOString().split('T')[0];;
+  getTodaysDate(): string {
+    let today: string = new Date().toISOString().split('T')[0];;
     console.log(today);
     return today;
   }
 
-  getMinimunDate(stringDates: String[]): String{
+
+  // convertStringToDate(stringsToConvert: string[]): Date{
+  //   return new Date(stringsToConvert[0], stringsToConvert[1], stringsToConvert[2]);
+  // }
+
+
+  getMinimumDate(stringDates: String[]): String {
     let dates: any[] = [];
-    let minimunDate!: Date;
-    stringDates.map(function(string){
-      
-      
+    let minimumDate!: Date;
+    stringDates.map(function (string) {
+
+
       dates.push(new Date(string.split("-").join("/")));
     })
 
-    minimunDate = new Date(Math.min.apply(null,dates));
-    console.log(minimunDate.toISOString().split('T')[0]);
+    minimumDate = new Date(Math.min.apply(null, dates));
+    console.log(minimumDate.toISOString().split('T')[0]);
 
-    return minimunDate.toISOString().split('T')[0];
+    return minimumDate.toISOString().split('T')[0];
   }
 
 
