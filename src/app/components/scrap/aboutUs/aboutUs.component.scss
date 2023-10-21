@@ -1,0 +1,17 @@
+.container-fluid{
+    width: auto;
+    min-height:80vh;
+    margin: 0rem 2rem;  
+    background-image: url("../../../../assets/images/ELJEFE.png" );   
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.mbr-overlay {
+    opacity: 0.3; 
+    background-color: rgb(255, 255, 255);
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    top: 10%;
+    position: absolute;
+}
