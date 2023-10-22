@@ -14,6 +14,9 @@ export class AdminLandpageComponent implements OnInit {
 
   constructor() { }
 
+   /**
+   * Se obtienen los datos de un archivo JSON.
+   */
   ngOnInit() {
     this.projectList = (projectListJSON as any).default;
   }

@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   userRole = localStorage.getItem('role');
 
   constructor(private sessionGuard: SessionGuard, private router: Router) {
+    /**
+     * Obtiene la bandera de rol para mostrar el contenido adecuado en el header.
+     */
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
 

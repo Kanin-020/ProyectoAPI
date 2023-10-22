@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * Generación del formulario.
+   */
   ngOnInit() {
     this.formItem = new FormGroup({
       email: new FormControl(this.userData.email, [Validators.required, Validators.email]),
@@ -23,8 +26,5 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  login() {
-
-  }
 
 }

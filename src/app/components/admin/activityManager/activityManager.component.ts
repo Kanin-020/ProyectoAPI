@@ -22,6 +22,9 @@ export class ActivityManagerComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * Se obtienen los datos de un archivo JSON.
+   */
   ngOnInit() {
 
     this.activityList = (activityListJSON as any).default;

@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  /**
+   * Elimina las llaves de acceso al iniciar.
+   */
   ngOnInit() {
 
     localStorage.removeItem('token');
@@ -30,6 +33,11 @@ export class LoginComponent implements OnInit {
 
   }
 
+  /**
+   * Función de login.
+   * 123 = Iniciar sesión como usuario.
+   * 456 = Iniciar sesión como administrador.
+   */
   login() {
     const { username, password } = this.userData;
 

@@ -13,6 +13,9 @@ export class UserManagerComponent implements OnInit {
 
   protected userList: any[] = [];
 
+  /**
+   * Controlador del paginador de la tabla.
+   */
   protected page: PageEvent = {
     length: 0,
     pageIndex: 0,
@@ -22,6 +25,9 @@ export class UserManagerComponent implements OnInit {
 
   constructor() { }
 
+  /**
+  * Se obtienen los datos de un archivo JSON.
+  */
   ngOnInit() {
 
     this.userList = (userListJSON as any).default;

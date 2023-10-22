@@ -22,6 +22,9 @@ export class SupportComponent implements OnInit {
     });
   }
 
+  /**
+   * Realiza la llamada al servicio de correo para enviar una petición.
+   */
   callMailService(){
     this.emailService.sendSupportEmail("NombreEjemplo", this.sendRequest);
   }
