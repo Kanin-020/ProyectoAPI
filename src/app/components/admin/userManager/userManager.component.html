@@ -1,3 +1,60 @@
-<p>
-  userManager works!
-</p>
+<div class="container-fluid pt-2">
+  <div class="row px-2">
+    <div class="col">
+      <h1>Gestión de usuarios</h1>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="input-group">
+        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="75"
+            height="20"></i-bs></span>
+        <input type="text" class="form-control" placeholder="Buscar productos">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Último login</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            *ngFor="let user of userList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            <td>{{user['id']}}</td>
+            <td>{{user['name']}}</td>
+            <td>{{user['email']}}</td>
+            <td>{{user['password']}}</td>
+            <td>{{user['rol']}}</td>
+            <td>{{user['creation_date']}}</td>
+            <td>{{user['last_login']}}</td>
+          </tr>
+
+          <tr *ngIf="userList['length'] === 0">
+            <td colspan="5">No existen usuarios asociados a este proyecto.</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length"
+        [pageSize]="page.pageSize" [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true"
+        aria-label="Select page">
+      </mat-paginator>
+
+    </div>
+  </div>
+</div>

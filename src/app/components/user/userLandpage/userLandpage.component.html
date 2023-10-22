@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col align-items-center text-center">
+      <h1>Bienvenido usuario</h1> <!--aquí se obtendrá el nombre de la cuenta del usuario -->
+      <h4>Actividades asignadas</h4>
+    </div>
+  </div>
+  <div class="container card">
+    <div class="row task-title">
+      <h5>Linea del tiempo</h5>
+    </div>
+    <div class="row task-container">
+      <ul class="task-list">
+        <li *ngFor="let item of itemList">
+          <app-taskItem [taskItem]="item"></app-taskItem>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

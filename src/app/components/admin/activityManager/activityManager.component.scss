@@ -1,0 +1,23 @@
+.container-fluid {
+    width: auto;
+    min-height:80vh;
+    margin: 0rem 2rem;
+}
+
+.search-icon, .form-control{
+    background-color: var(--blank-color);
+    color: var(--dark-color);
+    border: none !important;
+}
+
+.arrow-icon{
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border: none !important;
+}
+
+.input-group{
+    border: none !important;
+    color: var(--dark-color);
+    border-bottom: 1px solid !important;
+}

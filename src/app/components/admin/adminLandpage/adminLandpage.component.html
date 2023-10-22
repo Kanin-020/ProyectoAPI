@@ -1,0 +1,22 @@
+<div class="container-fluid px-2">
+  <div class="row">
+    <div class="col">
+      <h1>Listado de proyectos</h1>
+      <ul class="project-list">
+        <li class="project-list-item" *ngFor="let project of projectList">
+          <app-projectItem [projectItem]="project"></app-projectItem>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Resuelva dudas de otros usuarios.</h1>
+      <div class="content">
+        <p>Como administrador, tiene la tarea de revisar los tickets de soporte que manden los usuarios.</p>
+        <button type="button" class="btn btn-primary">Revisión de Tickets</button>
+      </div>
+    </div>
+  </div>
+</div>

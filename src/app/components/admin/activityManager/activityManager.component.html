@@ -1,3 +1,61 @@
-<p>
-  activityManager works!
-</p>
+<div class="container-fluid pt-2">
+  <div class="row px-2">
+    <div class="col">
+      <h1>Registro de actividades</h1>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="input-group">
+        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="20" height="20"></i-bs></span>
+        <input type="text" class="form-control" placeholder="Nombre">
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Fecha de inicio">
+        <span class="arrow-icon input-group-text " id="basic-addon1"><i-bs name="arrow-right-short" width="30" height="30"></i-bs></span>
+        <input type="text" class="form-control" placeholder="Fecha de fin">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let activity of activityList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            <td>{{activity['id']}}</td>
+            <td>{{activity['name']}}</td>
+            <td>{{activity['description']}}</td>
+            <td>{{activity['deadline']}}</td>
+            <td>{{activity['status']}}</td>
+          </tr>
+
+          <tr *ngIf="activityList['length'] === 0">
+            <td colspan="5">No existen actividades asociadas a este proyecto.</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
+        [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

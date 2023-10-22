@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LandpageComponent } from './landpage.component';
+import { ProjectItemComponent } from './projectItem.component';
 
-describe('LandpageComponent', () => {
-  let component: LandpageComponent;
-  let fixture: ComponentFixture<LandpageComponent>;
+describe('ProjectItemComponent', () => {
+  let component: ProjectItemComponent;
+  let fixture: ComponentFixture<ProjectItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandpageComponent ]
+      declarations: [ ProjectItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LandpageComponent);
+    fixture = TestBed.createComponent(ProjectItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,30 @@
+.container-fluid{
+    width: auto;
+    min-height:80vh;
+}
+
+.hero1{
+    background-color: var(--light-color);
+}
+
+.h4{
+    color: var(--primary-color);
+}
+
+.container{
+    background-color: var(--clear-color);
+    width: 50vw;
+    width: 50%;
+    margin: auto;
+}
+
+.form-control{
+    width: 20vw;
+    background-color: var(--light-color);
+    border-color: var(--light-color);
+    color: var(--text-color);
+}
+
+small{
+    color: var(--dark-color);
+}

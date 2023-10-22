@@ -1,3 +1,95 @@
-<p>
-  support works!
-</p>
+<div class=".container-fluid">
+  <div class="hero1 px-4 py-5 text-center">
+    <h1 class="h4 fw-bold mb-0">Soporte</h1>
+    <h1 class="display-8 fw-bold mb-5">Preguntas frecuentes</h1>
+
+    <div class="container my-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
+        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription1" aria-expanded="false" aria-controls="collapseDescription1">
+          +
+        </button>
+      </div>
+      <div class="collapse" id="collapseDescription1">
+        <hr class="dropdown-divider">
+        <div>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
+        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription2" aria-expanded="false" aria-controls="collapseDescription2">
+          +
+        </button>
+      </div>
+      <div class="collapse" id="collapseDescription2">
+        <hr class="dropdown-divider">
+        <div>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
+        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription3" aria-expanded="false" aria-controls="collapseDescription3">
+          +
+        </button>
+      </div>
+      <div class="collapse" id="collapseDescription3">
+        <hr class="dropdown-divider">
+        <div>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
+        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription4" aria-expanded="false" aria-controls="collapseDescription4">
+          +
+        </button>
+      </div>
+      <div class="collapse" id="collapseDescription4">
+        <hr class="dropdown-divider">
+        <div>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <strong class="p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?</strong>
+        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription5" aria-expanded="false" aria-controls="collapseDescription5">
+          +
+        </button>
+      </div>
+      <div class="collapse" id="collapseDescription5">
+        <hr class="dropdown-divider">
+        <div>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero2 px-4 py-5 text-center">
+    <h1 class="h4 fw-bold mb-0">¿Necesita ayuda?</h1>
+    <h1 class="display-8 fw-bold">Mandar un ticket</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"><strong>Envíe su duda y nuestro equipo de soporte se pondrá en contacto con usted mediante su correo electrónico.</strong></p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <form class="d-flex" role="search" (ngSubmit)="callMailService()" [formGroup]="formItem">
+          <input class="form-control me-2" type="search" aria-label="Search" [(ngModel)]="sendRequest" required>
+          <button class="btn btn-primary" type="submit" [disabled]="formItem.invalid">Enviar</button>
+        </form>
+      </div>
+      <p><small>Recibirá un correo de respuesta en el plazo de una semana, si no recive respuesta, comuniquese al correo "placeholder@correo.com".</small></p>
+    </div>
+  </div>
+</div>
