@@ -1,7 +1,8 @@
 [
     {
         "id": "111111",
-        "content": "charlie",
+        "autor": "charlie",
+        "content": "lorem ipsum dolor sit amet",
         "status": "Listo",
         "date": "29/10/2023"
 
