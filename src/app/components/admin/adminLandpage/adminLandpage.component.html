@@ -1,11 +1,17 @@
-<div class="container-fluid px-2">
+<div class="container-fluid py-2">
   <div class="row">
     <div class="col">
-      <h1>Listado de proyectos</h1>
+      <h1 class="mb-4">Listado de proyectos</h1>
       <ul class="project-list">
         <li class="project-list-item" *ngFor="let project of projectList">
           <app-projectItem [projectItem]="project"></app-projectItem>
         </li>
+        <div class="card border-2">
+          <h5 class="card-header text-center border-2">Crear nuevo proyecto</h5>
+          <div class="card-body d-flex align-items-center justify-content-center border-2">
+            <a href="/admin-project-creator" class="btn btn-primary btn-lg"><i-bs name="folder-plus" width="50" height="40"></i-bs></a>
+          </div>
+        </div>
       </ul>
     </div>
 

@@ -1,28 +1,29 @@
-<div class="container-fluid pt-2">
+<div class="container-fluid py-2">
   <div class="row px-2">
     <div class="col">
-      <h1>Registro de actividades</h1>
+      <h1>Registro de tareas - ProyectoEjemplo</h1>
     </div>
   </div>
 
   <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <span class="search-icon input-group-text " id="basic-addon1"><i-bs name="search" width="20" height="20"></i-bs></span>
-        <input type="text" class="form-control" placeholder="Nombre">
+        <button class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></button>
+        <input type="text" class="form-control" placeholder="Nombre de la tarea">
       </div>
     </div>
   </div>
-
   <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Fecha de inicio">
+        <button class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></button>
+        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha mínima">
         <span class="arrow-icon input-group-text " id="basic-addon1"><i-bs name="arrow-right-short" width="30" height="30"></i-bs></span>
-        <input type="text" class="form-control" placeholder="Fecha de fin">
+        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha máxima">
       </div>
     </div>
   </div>
+
 
   <div class="row">
     <div class="col">
@@ -45,10 +46,11 @@
             <td>{{activity['description']}}</td>
             <td>{{activity['deadline']}}</td>
             <td>{{activity['status']}}</td>
+            <td><button class="btn btn-secondary btn-sm" onclick="location.href='/admin-task-modifier'">Editar</button></td>
           </tr>
 
           <tr *ngIf="activityList['length'] === 0">
-            <td colspan="5">No existen actividades asociadas a este proyecto.</td>
+            <td colspan="5">No existen tareas asociadas a este proyecto.</td>
           </tr>
 
         </tbody>
@@ -56,6 +58,9 @@
       <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"
         [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true" aria-label="Select page">
       </mat-paginator>
+      <div class="mt-2 d-flex justify-content-center">
+        <button class="btn btn-primary btn-lg" onclick="location.href='/admin-task-creator'">Crear nueva actividad</button>
+      </div>
     </div>
   </div>
 </div>

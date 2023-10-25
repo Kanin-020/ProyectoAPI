@@ -4,12 +4,12 @@ import { SessionGuard } from 'src/app/guards/session.guard';
 import * as activityListJSON from "src/assets/json/activitySample.json";
 
 @Component({
-  selector: 'app-activityManager',
-  templateUrl: './activityManager.component.html',
-  styleUrls: ['./activityManager.component.scss'],
+  selector: 'app-taskManager',
+  templateUrl: './taskManager.component.html',
+  styleUrls: ['./taskManager.component.scss'],
   providers: [SessionGuard]
 })
-export class ActivityManagerComponent implements OnInit {
+export class TaskManagerComponent implements OnInit {
 
   protected activityList: any[] = [];
 

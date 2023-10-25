@@ -18,14 +18,17 @@ export class RoleGuard implements CanActivate {
         const allowedRoutesByRole: AllowedRoutes = {
             'admin': [
                 'admin-landpage',
-                'admin-activity-creator',
-                'admin-activity-modifier',
-                'admin-activity-manager',
+                'admin-project-creator',
+                'admin-project-modifier',
+                'admin-task-creator',
+                'admin-task-modifier',
+                'admin-task-manager',
                 'admin-user-manager',
             ],
             'user': [
                 'user-landpage',
-                'user-task-manager',
+                'user-task-details',
+                'user-task-archive',
                 'user-support'
             ],
         };

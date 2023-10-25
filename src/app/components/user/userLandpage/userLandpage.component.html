@@ -1,20 +1,35 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col align-items-center text-center">
-      <h1>Bienvenido usuario</h1> <!--aquí se obtendrá el nombre de la cuenta del usuario -->
-      <h4>Actividades asignadas</h4>
+<div class="container-fluid py-2">
+
+  <div class="align-items-center text-center my-2">
+    <h1 class="h4 fw-bold mb-0">Bienvenido usuario</h1><!--aquí se obtendrá el nombre de la cuenta del usuario -->
+    <h1 class="display-8 fw-bold">Actividades asignadas</h1>
+  </div>
+
+  <div class="task-content">
+    <div class="container card border-2">
+      <div class="task-title">
+        <h5>Próximos a entregar:</h5>
+      </div>
+      <div class="task-container">
+        <ul class="task-list">
+          <li *ngFor="let item of itemList">
+            <app-taskItem [taskItem]="item"></app-taskItem>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container card border-2">
+      <div class="task-title">
+        <h5>Actividades con retardo:</h5>
+      </div>
+      <div class="task-container">
+        <ul class="task-list">
+          <li *ngFor="let item of itemList">
+            <app-taskItem [taskItem]="item"></app-taskItem>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="container card">
-    <div class="row task-title">
-      <h5>Linea del tiempo</h5>
-    </div>
-    <div class="row task-container">
-      <ul class="task-list">
-        <li *ngFor="let item of itemList">
-          <app-taskItem [taskItem]="item"></app-taskItem>
-        </li>
-      </ul>
-    </div>
-  </div>
+
 </div>

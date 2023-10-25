@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { SessionGuard } from 'src/app/guards/session.guard';
-import * as userListJSON from "src/assets/json/taskSample.json";
+import * as taskListJSON from "src/assets/json/taskSample.json";
 
 
 @Component({
-  selector: 'app-taskManager',
-  templateUrl: './taskManager.component.html',
-  styleUrls: ['./taskManager.component.scss'],
+  selector: 'app-taskArchive',
+  templateUrl: './taskArchive.component.html',
+  styleUrls: ['./taskArchive.component.scss'],
   providers: [SessionGuard]
 })
-export class TaskManagerComponent implements OnInit {
+export class TaskArchiveComponent implements OnInit {
   protected taskList: any[] = [];
 
   protected page: PageEvent = {
@@ -24,7 +24,7 @@ export class TaskManagerComponent implements OnInit {
 
 
   ngOnInit() {
-    this.taskList = (userListJSON as any).default;
+    this.taskList = (taskListJSON as any).default;
     this.page.length = this.taskList.length;
 
     console.log(this.taskList.length);

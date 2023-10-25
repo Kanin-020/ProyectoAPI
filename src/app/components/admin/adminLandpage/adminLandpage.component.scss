@@ -27,6 +27,15 @@ h3{
     list-style: none;
 }
 
+.card{
+    width: 20rem;
+}
+
+.card, .card-header, .card-footer{
+    border-color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
 .project-list-item{
     width: fit-content;
 }

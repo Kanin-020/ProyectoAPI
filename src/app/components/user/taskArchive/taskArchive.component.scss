@@ -4,14 +4,17 @@
     margin: 0rem 2rem;
 }
 
-.search-icon, .form-control{
-    background-color: var(--blank-color);
-    color: var(--dark-color);
-    border: none !important;
+.date-box{
+    .date-holder{
+        border-color: var(--blank-color);
+    }
+    .separator{
+        border-top: var(--dark-color);
+    }
 }
 
-.arrow-icon{
-    background-color: var(--light-color);
+span, .form-control{
+    background-color: var(--blank-color);
     color: var(--dark-color);
     border: none !important;
 }
