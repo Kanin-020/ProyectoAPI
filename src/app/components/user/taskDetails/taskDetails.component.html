@@ -9,30 +9,33 @@
         <div class="row main-row">
             <div class="col-4 py-4">
                 <div class="big-selector m-2">
-                    <div class="form-group bordered-container m-2">
+                    <div class="bordered-container m-2">
                         <p><strong>Nombre del proyecto</strong></p>
-                        <textarea class="form-control" id="comment-name" rows="1"></textarea>
+                        <p>
+                            Proyecto ejemplo
+                        </p>
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Nombre de la tarea</strong></p>
-                        <textarea class="form-control" id="comment-name" rows="1"></textarea>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Descripción</strong></p>
-                        <textarea class="form-control" id="comment-description" rows="3"></textarea>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus tristique massa ac placerat. 
+                            Sed ac nisi sit amet augue tincidunt iaculis ac in nunc. Fusce nec dui ante. Aenean eget molestie dui. 
+                            Ut eleifend mollis lectus, in porta tortor vehicula eget. 
+                            Pellentesque neque justo, tempus eu nulla a, tristique convallis neque. 
+                            Sed libero lectus, mollis eget egestas quis, sodales sed magna.
+                        </p>
                     </div>
                     <div class="form-group bordered-container m-2">
-                        <p><strong>Estado</strong></p>
-                        <select id="Select" class="form-select">
-                            <option>En proceso</option>
-                            <option>En hiatus</option>
-                            <option>Finalizado</option>
-                        </select>
-                    </div>
-                    <div class="form-group bordered-container m-2">
-                        <p><strong>Fecha de entrega</strong></p>
-                        <input type="text" class="form-control" onfocus="(this.type='date')"
-                            onblur="(this.type='text')">
+                        <p><strong>Fecha de entrega límite</strong></p>
+                        <p>
+                            dd/mm/aaaa
+                        </p>
                     </div>
                 </div>
             </div>
@@ -40,11 +43,6 @@
                 <div class="big-selector m-2">
                     <div class="form-group bordered-container rounded">
                         <label class="form-label" for="form1"><strong>Personal asignado</strong></label>
-                        <div class="d-flex justify-content-center">
-                            <input type="text" id="form1" class="form-control" placeholder="Id única de usuario" />
-                            <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75"
-                                    height="20"></i-bs></button>
-                        </div>
                         <div class="my-custom-scrollbar mt-2 ">
                             <div class="border-bottom row mt-2 mb-0">
                                 <div class="col-8">
@@ -64,16 +62,16 @@
             <div class="big-selector col-2 py-4">
                 <div class="row">
                     <div class="col btn-cont">
-                        <button class="btn btn-lg btn-primary" type="button" onclick="location.href='/admin-landpage'">
-                            Guardar cambios
+                        <button class="btn btn-lg btn-primary" type="button" onclick="location.href='/user-task-details'">
+                            Marcar como finalizada
                         </button>
                     </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col btn-cont">
-                        <button class="btn btn-lg btn-secondary" type="button"
-                            onclick="location.href='/admin-landpage'">
-                            Cancelar modificaciones
+                        <button class="btn btn-lg btn-danger" type="button"
+                            onclick="location.href='/user-task-details'">
+                            Marcar como no finalizada
                         </button>
                     </div>
                 </div>
@@ -90,6 +88,7 @@
         <table class="table">
             <thead>
               <tr>
+                <th scope="col">Autor</th>
                 <th scope="col">Contenido</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Fecha de creación</th>
@@ -100,11 +99,18 @@
 
             <tbody>
               <tr *ngFor="let comment of commentList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
-                <td>{{comment['content']}}</td>
+                <td>{{comment['autor']}}</td>
+                <td><input type="text" class="form-control" placeholder='{{comment["content"]}}'></td>
                 <td>{{comment['status']}}</td>
                 <td>{{comment['date']}}</td>
-                <td><button class="btn btn-secondary btn-sm">Editar</button></td>
-                <td><button class="btn btn-secondary btn-sm">Eliminar</button></td>
+                <td><button class="btn btn-primary  btn-sm">Actualizar</button></td>
+                <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+              </tr>
+              <tr *ngFor="let comment of commentList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+                <td>{{comment['autor']}}</td>
+                <td>{{comment["content"]}}</td>
+                <td>{{comment['status']}}</td>
+                <td>{{comment['date']}}</td>
               </tr>
 
               <tr *ngIf="commentList['length'] === 0">
