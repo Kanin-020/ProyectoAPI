@@ -32,6 +32,8 @@ import { RoleGuard } from './guards/role.guard';
 import { ProjectItemComponent } from './partials/projectItem/projectItem.component';
 
 import { EmailService } from './services/email.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { EmailService } from './services/email.service';
     ReactiveFormsModule,
     MatPaginatorModule,
     NgxPaginationModule,
+    HttpClientModule,
     NgxBootstrapIconsModule.pick(allIcons)
   ],
   providers: [SessionGuard, RoleGuard, EmailService],

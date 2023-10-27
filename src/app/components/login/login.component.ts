@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionGuard } from 'src/app/guards/session.guard';
+import { UserService } from 'src/app/services/api/user.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   userData: any = {};
   formItem!: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   /**
    * Elimina las llaves de acceso al iniciar.
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('role');
 
     this.formItem = new FormGroup({
-      username: new FormControl(this.userData.username, Validators.required),
+      email: new FormControl(this.userData.email, Validators.required),
       password: new FormControl(this.userData.password, Validators.required),
     });
 
@@ -39,38 +40,27 @@ export class LoginComponent implements OnInit {
    * 456 = Iniciar sesión como administrador.
    */
   login() {
-    const { username, password } = this.userData;
 
-    //*Mock login
-    if (username && password == 123) {
-      localStorage.setItem('token', 'token');
-      localStorage.setItem('secretKey', 'secretKey');
-      localStorage.setItem('role', 'admin');
-    }
+    const { email, password } = this.userData;
 
-    if (username && password == 456) {
-      localStorage.setItem('token', 'token');
-      localStorage.setItem('secretKey', 'secretKey');
-      localStorage.setItem('role', 'user');
-    }
+    this.userService.login(email, password).subscribe(
+      (response: any) => {
 
+        localStorage.setItem('role', response.role);
 
-    if (localStorage.getItem('role') == 'user') {
-      this.router.navigate(['user-landpage']);
-    } else if (localStorage.getItem('role') == 'admin') {
-      this.router.navigate(['admin-landpage']);
-    }
+        localStorage.setItem('token', 'token');
+        localStorage.setItem('secretKey', 'secretKey');
 
-    //TODO Real component
-    // this.userService.login(username, password).subscribe(
-    //   (response: any) => {
+        if (response.role == 'trabajador') {
+          this.router.navigate(['/user-landpage']);
 
-    //     localStorage.setItem('token', response.token.token);
-    //     localStorage.setItem('secretKey', response.token.secretKey);
+        } else if (response.role == 'administrador') {
+          this.router.navigate(['/admin-landpage']);
+        }
 
-    //     this.router.navigate(['/menu']);
-    //   }
-    // );
+      }
+    );
+
   }
 
 }
