@@ -25,31 +25,31 @@ export class UserService {
   }
 
   getUsersList() {
-    return this.http.get(`${this.API_URL}/users/get-all`);
+    return this.http.get(`${this.API_URL}/get-all`);
   }
 
   getWorkersList() {
-    return this.http.get(`${this.API_URL}/users/get-workers`);
+    return this.http.get(`${this.API_URL}/get-workers`);
   }
 
   getAdministratorsList() {
-    return this.http.get(`${this.API_URL}/users/get-administrators`);
+    return this.http.get(`${this.API_URL}/get-administrators`);
   }
 
   getUserById(userId: number) {
-    return this.http.get(`${this.API_URL}/users/get/${userId}`);
+    return this.http.get(`${this.API_URL}/get/${userId}`);
   }
 
   editUser(userId: number, name: string, email: string, password: string, rol: string) {
 
     const body = { name, email, password, rol };
 
-    return this.http.put(`${this.API_URL}/users/edit/${userId}`, body);
+    return this.http.put(`${this.API_URL}/edit/${userId}`, body);
 
   }
 
   deleteUser(userId: number) {
-    return this.http.delete(`${this.API_URL}/users/delete/${userId}`);
+    return this.http.delete(`${this.API_URL}/delete/${userId}`);
   }
 
 
