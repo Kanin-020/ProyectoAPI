@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'admin-task-manager', canActivate: [SessionGuard, RoleGuard], component: TaskManagerComponent },
   { path: 'admin-user-manager', canActivate: [SessionGuard, RoleGuard], component: UserManagerComponent },
   { path: 'user-landpage', canActivate: [SessionGuard, RoleGuard], component: UserLandpageComponent },
-  { path: 'user-task-details', canActivate: [SessionGuard, RoleGuard], component: TaskDetailsComponent},
+  { path: 'user-task-details/:taskId', canActivate: [SessionGuard, RoleGuard], component: TaskDetailsComponent},
   { path: 'user-task-archive', canActivate: [SessionGuard, RoleGuard], component: TaskArchiveComponent},
   { path: 'user-support', canActivate: [SessionGuard, RoleGuard], component: SupportComponent },
   { path: '**', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto para manejar rutas no encontradas

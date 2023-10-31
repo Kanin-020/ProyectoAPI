@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-taskItem',
@@ -8,5 +9,12 @@ import { Component, Input } from '@angular/core';
 export class TaskItemComponent {
 
   @Input() taskItem: any;
+
+  constructor(private router: Router) { }
+
+  openTask() {
+    const taskId = this.taskItem.taskId;
+    this.router.navigate(['/user-task-details', taskId]);
+  }
 
 }

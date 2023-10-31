@@ -26,6 +26,10 @@ export class CommentService {
     return this.http.get(`${this.API_URL}/get/${commentId}`);
   }
 
+  getCommentsByTaskId(taskId: number){
+    return this.http.get(`${this.API_URL}/get/task/${taskId}`);
+  }
+
   editComment(commentId: number, state: string, content: string) {
 
     const body = { state, content };

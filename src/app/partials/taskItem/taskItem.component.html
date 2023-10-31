@@ -5,7 +5,7 @@
     <div class="card-body">
         <h5 class="card-title">{{taskItem.name}}</h5>
         <p class="card-text">Proyecto asignado: {{taskItem.projectName}}</p>
-        <a href="/user-task-details" class="btn btn-primary">Abrir detalles</a>
+        <a (click)="openTask()" class="btn btn-primary">Abrir detalles</a>
     </div>
     <div class="card-footer text-body-secondary">
         {{taskItem.deadline}}

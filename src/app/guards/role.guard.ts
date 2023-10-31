@@ -27,7 +27,7 @@ export class RoleGuard implements CanActivate {
             ],
             'trabajador': [
                 'user-landpage',
-                'user-task-details',
+                'user-task-details/:taskId',
                 'user-task-archive',
                 'user-support'
             ],
