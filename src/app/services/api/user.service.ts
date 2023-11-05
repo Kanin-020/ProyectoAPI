@@ -40,9 +40,9 @@ export class UserService {
     return this.http.get(`${this.API_URL}/get/${userId}`);
   }
 
-  editUser(userId: number, name: string, email: string, password: string, rol: string) {
+  editUser(userId: number, name: string, email: string, password: string, role: string) {
 
-    const body = { name, email, password, rol };
+    const body = { name, email, password, role };
 
     return this.http.put(`${this.API_URL}/edit/${userId}`, body);
 

@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('secretKey');
     localStorage.removeItem('role');
+    localStorage.removeItem('userId');
 
     this.formItem = new FormGroup({
       email: new FormControl(this.userData.email, Validators.required),

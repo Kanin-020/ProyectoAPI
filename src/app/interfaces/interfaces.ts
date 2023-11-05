@@ -32,10 +32,11 @@ export interface User {
     projectId?: number,
     name: string,
     email: string,
+    oldPassword?: string,
     password: string,
     role: string,
-    creationDate: string,
-    lastLoginDate: string
+    creationDate?: string,
+    lastLoginDate?: string
 }
 
 export interface Relation {
