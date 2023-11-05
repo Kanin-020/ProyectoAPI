@@ -12,8 +12,8 @@ export class CommentService {
 
   constructor(private readonly http: HttpClient) { }
 
-  addComment(taskId: number, userId: number, state: string, content: string, date: string) {
-    const body = { taskId, userId, state, content, date };
+  addComment(status: string, content: string, date: string) {
+    const body = { status, content, date };
 
     return this.http.post(`${this.API_URL}/add`, body);
   }
@@ -26,13 +26,9 @@ export class CommentService {
     return this.http.get(`${this.API_URL}/get/${commentId}`);
   }
 
-  getCommentsByTaskId(taskId: number){
-    return this.http.get(`${this.API_URL}/get/task/${taskId}`);
-  }
+  editComment(commentId: number, status: string, content: string) {
 
-  editComment(commentId: number, state: string, content: string) {
-
-    const body = { state, content };
+    const body = { status, content };
 
     return this.http.put(`${this.API_URL}/edit/${commentId}`, body);
 

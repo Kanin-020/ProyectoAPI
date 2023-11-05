@@ -12,7 +12,7 @@
       </div>
       <div class="task-container">
         <ul class="task-list">
-          <li *ngFor="let item of taskList">
+          <li *ngFor="let item of activeTaskList">
             <app-taskItem [taskItem]="item"></app-taskItem>
           </li>
         </ul>
@@ -24,7 +24,7 @@
       </div>
       <div class="task-container">
         <ul class="task-list">
-          <li *ngFor="let item of taskList">
+          <li *ngFor="let item of pendingTaskList">
             <app-taskItem [taskItem]="item"></app-taskItem>
           </li>
         </ul>

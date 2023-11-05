@@ -12,8 +12,8 @@ export class TaskService {
 
   constructor(private readonly http: HttpClient) { }
 
-  addTask(name: string, description: string, state: string, creationDate: string, deadline: string) {
-    const body = { name, description, state, creationDate, deadline };
+  addTask(name: string, description: string, status: string, creationDate: string, deadline: string) {
+    const body = { name, description, status, creationDate, deadline };
 
     return this.http.post(`${this.API_URL}/add`, body);
   }
@@ -26,9 +26,9 @@ export class TaskService {
     return this.http.get(`${this.API_URL}/get/${taskId}`);
   }
 
-  editTask(taskId: number, name: string, description: string, state: string, creationDate: string, deadline: string) {
+  editTask(taskId: number, name: string, description: string, status: string, creationDate: string, deadline: string) {
 
-    const body = { name, description, state, creationDate, deadline };
+    const body = { name, description, status, creationDate, deadline };
 
     return this.http.put(`${this.API_URL}/edit/${taskId}`, body);
 

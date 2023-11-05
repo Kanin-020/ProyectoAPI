@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { SessionGuard } from 'src/app/guards/session.guard';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/api/task.service';
 import { ProjectService } from 'src/app/services/api/project.service';
 import { CommentService } from 'src/app/services/api/comment.service';
-import { Project, Task, Comment, User } from 'src/app/interfaces/interfaces';
+import { Project, Task, Comment, User, Relation } from 'src/app/interfaces/interfaces';
 import { UserService } from 'src/app/services/api/user.service';
+import { forkJoin } from 'rxjs';
+import { RelationsCommentsService } from 'src/app/services/api/relationsComments.service';
+import { RelationsProjectsService } from 'src/app/services/api/relationsProjects.service';
+
 
 @Component({
   selector: 'app-taskDetails',
@@ -16,48 +20,52 @@ import { UserService } from 'src/app/services/api/user.service';
 })
 export class TaskDetailsComponent {
 
-  protected page: PageEvent = {
+  page: PageEvent = {
     length: 0,
     pageIndex: 0,
     pageSize: 10,
     previousPageIndex: 0
   };
 
-  protected workersList: string[] = [];
+  workersList: User[] = [];
+  workerNameList: string[] = [];
+  commentList: Comment[] = [];
 
-  protected commentList: Comment[] = [];
+  relationsCommentsList: Relation[] = [];
+  relationsProjectsList: Relation[] = [];
 
-  protected taskId: number = 0;
+  taskId: number = 0;
+  userId: number = parseInt(localStorage.getItem('userId')!);
 
-  protected taskItem: Task = {
+  taskItem: Task = {
     taskId: 0,
     projectId: 0,
     name: '',
     description: '',
-    state: '',
+    status: '',
     creationDate: '',
     deadline: '',
   };
 
-  protected projectItem: Project = {
+  projectItem: Project = {
     projectId: 0,
     name: '',
     description: '',
-    state: '',
+    status: '',
     creationDate: '',
     deadline: '',
   };
 
-  protected commentItem: Comment = {
+  commentItem: Comment = {
     commentId: 0,
     taskId: 0,
     userId: 0,
-    state: '',
+    status: '',
     content: '',
     date: '',
   };
 
-  constructor(private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService, private commentService: CommentService, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService, private commentService: CommentService, private userService: UserService, private relationsCommentsService: RelationsCommentsService, private relationsProjectsService: RelationsProjectsService) {
     this.route.params.subscribe(params => {
       this.taskId = params['taskId'];
     });
@@ -65,57 +73,100 @@ export class TaskDetailsComponent {
 
   async ngOnInit() {
 
-    this.taskService.getTaskById(this.taskId).subscribe(async (response: any) => {
 
-      const taskData = await response.task;
+    forkJoin([
+      this.taskService.getTaskById(this.taskId),
+      this.userService.getWorkersList(),
+      this.relationsCommentsService.getCommentRelationByUserId(this.userId),
+      this.relationsProjectsService.getProjectRelationByTaskId(this.taskId),
+    ]).subscribe(async ([taskResponse, workerResponse, relationCommentsResponse, relationProjectsResponse]) => {
 
-      this.taskItem = taskData;
+      const taskItem: Task = await (taskResponse as any).task;
+      const workersList: User[] = await (workerResponse as any).workers;
+      const relationCommentsList: Relation[] = await (relationCommentsResponse as any).relations_comments;
+      const relationProjectsList: Relation[] = await (relationProjectsResponse as any).relations_projects;
 
-      const projectId = this.taskItem.projectId;
+      this.taskItem = taskItem;
+      this.workersList = workersList;
+      this.relationsCommentsList = relationCommentsList;
+      this.relationsProjectsList = relationProjectsList;
 
-      this.projectService.getProjectById(projectId).subscribe(async (response: any) => {
-
-        const projectData = await response.project;
-
-        this.projectItem = projectData;
-
-      });
+      this.getProjectData();
+      this.getCommentsData();
 
     });
 
-    this.commentService.getCommentsByTaskId(this.taskId).subscribe(async (response: any) => {
 
-      const commentData = await response.comments;
 
-      this.commentList = commentData;
+  }
 
-      this.userService.getWorkersList().subscribe(async (response: any) => {
 
-        const workersList = await response.workers;
+  getProjectData() {
 
-        this.commentList.forEach((comment: Comment) => {
+    this.relationsProjectsList.forEach(projectRelation => {
+      if (projectRelation.taskId == this.taskId) {
+        const projectId = projectRelation.projectId;
 
-          workersList.forEach((user: User) => {
+        this.projectService.getProjectById(projectId!).subscribe(async (response: any) => {
+          const projectData = response.project;
+          this.projectItem = projectData;
+        });
+      }
+    });
 
-            if (comment.userId == user.userId) {
-              this.workersList.push(user.name);
-            }
+  }
 
-          });
+
+  getCommentsData() {
+
+    this.relationsCommentsList.forEach(commentRelation => {
+      if (commentRelation.taskId == this.taskId) {
+
+        const commentId = commentRelation.commentId;
+
+        this.commentService.getCommentById(commentId!).subscribe(async (response: any) => {
+
+          const commentData = response.comment;
+
+          this.commentList.push(commentData);
         });
 
-        this.workersList = this.deleteDuplicatedElements(this.workersList);
+      }
 
+      this.workersList.forEach(worker => {
+        if (commentRelation.userId = worker.userId) {
+          this.workerNameList.push(worker.name);
+          console.log(worker.name);
+        }
       });
+
+      this.workerNameList = this.deleteDuplicatedWorkers(this.workerNameList);
 
     });
 
   }
 
-  deleteDuplicatedElements(list: string[]) {
-    return list.filter((value: any, index: any, self: any) => {
-      return self.indexOf(value) === index;
-    });
+  deleteDuplicatedWorkers(workers: string[]): string[] {
+
+    const uniqueSet = new Set(workers);
+
+    const uniqueArray = Array.from(uniqueSet);
+
+    return uniqueArray;
+  }
+
+  markAsDone() {
+    //TODO
+    // this.taskService.editTask(this.taskId, 'Terminada').subscribe((response: any) => {
+    //   console.log(response);
+    // });
+  }
+
+  markAsNotDone() {
+    //TODO
+    // this.taskService.editTaskStatus(this.taskId, 'Activo').subscribe((response: any) => {
+    //   console.log(response);
+    // });
   }
 
 

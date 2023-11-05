@@ -12,8 +12,8 @@ export class ProjectService {
 
   constructor(private readonly http: HttpClient) { }
 
-  addProject(name: string, description: string, state: string, creationDate: string, deadline: string) {
-    const body = { name, description, state, creationDate, deadline };
+  addProject(name: string, description: string, status: string, creationDate: string, deadline: string) {
+    const body = { name, description, status, creationDate, deadline };
 
     return this.http.post(`${this.API_URL}/add`, body);
   }
@@ -26,9 +26,9 @@ export class ProjectService {
     return this.http.get(`${this.API_URL}/get/${projectId}`);
   }
 
-  editProject(projectId: number, name: string, description: string, state: string, creationDate: string, deadline: string) {
+  editProject(projectId: number, name: string, description: string, status: string, creationDate: string, deadline: string) {
 
-    const body = { name, description, state, creationDate, deadline };
+    const body = { name, description, status, creationDate, deadline };
 
     return this.http.put(`${this.API_URL}/edit/${projectId}`, body);
 
