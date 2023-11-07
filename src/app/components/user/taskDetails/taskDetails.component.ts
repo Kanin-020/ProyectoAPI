@@ -38,6 +38,8 @@ export class TaskDetailsComponent {
   taskId: number = 0;
   userId: number = parseInt(localStorage.getItem('userId')!);
 
+  newCommentContent: string = '';
+
   taskItem: Task = {
     taskId: 0,
     projectId: 0,
@@ -78,7 +80,7 @@ export class TaskDetailsComponent {
     forkJoin([
       this.taskService.getTaskById(this.taskId),
       this.userService.getWorkersList(),
-      this.relationsCommentsService.getCommentRelationByUserId(this.userId),
+      this.relationsCommentsService.getCommentRelationByTaskId(this.taskId),
       this.relationsProjectsService.getProjectRelationByTaskId(this.taskId),
     ]).subscribe(async ([taskResponse, workerResponse, relationCommentsResponse, relationProjectsResponse]) => {
 
@@ -134,9 +136,9 @@ export class TaskDetailsComponent {
 
           commentData.userId = userId;
 
-          if(userId == this.userId){
+          if (userId == this.userId) {
             this.commentOwnList.push(commentData);
-          }else{
+          } else {
             this.commentOtherList.push(commentData);
           }
 
@@ -185,13 +187,28 @@ export class TaskDetailsComponent {
 
   }
 
-  updateComment(){
+  updateComment(comment: Comment, newCommentContent: string) {
+
+    const { commentId, status } = comment;
+
+    this.commentService.editComment(commentId, status, newCommentContent).subscribe(async (response: any) => {
+
+      alert(response.response || response.error);
+
+    });
 
   }
 
-  deleteComment(){
+  deleteComment(comment: Comment) {
+
+    const { commentId } = comment;
+
+    this.commentService.deleteComment(commentId).subscribe(async (response: any) => {
+
+      alert(response.response || response.error);
+
+    });
 
   }
-
 
 }

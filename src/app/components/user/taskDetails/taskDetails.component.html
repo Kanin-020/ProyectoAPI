@@ -82,11 +82,11 @@
                 <tr
                     *ngFor="let comment of commentOwnList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
                     <td>{{comment.userId}}</td>
-                    <td><input type="text" class="form-control" placeholder='{{comment.content}}'></td>
+                    <td><input type="text" class="form-control" placeholder='{{comment.content}}' [ngModel]="newCommentContent" (ngModelChange)="newCommentContent = $event"></td>
                     <td>{{comment.status}}</td>
                     <td>{{comment.date}}</td>
-                    <td><button class="btn btn-primary  btn-sm" (click)="updateComment()">Actualizar</button></td>
-                    <td><button class="btn btn-danger btn-sm" (click)="deleteComment()">Eliminar</button></td>
+                    <td><button class="btn btn-primary  btn-sm" (click)="updateComment(comment, newCommentContent)">Actualizar</button></td>
+                    <td><button class="btn btn-danger btn-sm" (click)="deleteComment(comment)">Eliminar</button></td>
                 </tr>
 
                 <tr *ngFor="let comment of commentOtherList | paginate: {itemsPerPage: page.pageSize, currentPage:
