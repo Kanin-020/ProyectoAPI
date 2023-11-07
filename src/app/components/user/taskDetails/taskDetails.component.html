@@ -35,11 +35,6 @@
                                 <div class="col-8">
                                     <p>{{workerName}}</p>
                                 </div>
-                                <div class="col-4">
-                                    <button class="btn btn-sm btn-warning p-2" type="button">
-                                        <i-bs name="person-dash-fill" width="75" height="20"></i-bs>
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,24 +80,24 @@
 
             <tbody>
                 <tr
-                    *ngFor="let comment of commentList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
-                    <td>{{comment.commentId}}</td>
+                    *ngFor="let comment of commentOwnList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+                    <td>{{comment.userId}}</td>
                     <td><input type="text" class="form-control" placeholder='{{comment.content}}'></td>
                     <td>{{comment.status}}</td>
                     <td>{{comment.date}}</td>
-                    <td><button class="btn btn-primary  btn-sm">Actualizar</button></td>
-                    <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+                    <td><button class="btn btn-primary  btn-sm" (click)="updateComment()">Actualizar</button></td>
+                    <td><button class="btn btn-danger btn-sm" (click)="deleteComment()">Eliminar</button></td>
                 </tr>
 
-                <tr *ngFor="let comment of commentList | paginate: {itemsPerPage: page.pageSize, currentPage:
+                <tr *ngFor="let comment of commentOtherList | paginate: {itemsPerPage: page.pageSize, currentPage:
                     (page.pageIndex +1)}; let indexUser = index">
-                    <td>{{comment.commentId}}</td>
+                    <td>{{comment.userId}}</td>
                     <td>{{comment.content}}</td>
                     <td>{{comment.status}}</td>
                     <td>{{comment.date}}</td>
                 </tr>
 
-                <tr *ngIf="commentList['length'] === 0">
+                <tr *ngIf="commentOwnList['length'] + commentOtherList['length'] === 0">
                     <td colspan="5">No existen comentarios en las tareas a las que está asociada.</td>
                 </tr>
 

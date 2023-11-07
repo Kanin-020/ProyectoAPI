@@ -29,7 +29,8 @@ export class TaskDetailsComponent {
 
   workersList: User[] = [];
   workerNameList: string[] = [];
-  commentList: Comment[] = [];
+  commentOwnList: Comment[] = [];
+  commentOtherList: Comment[] = [];
 
   relationsCommentsList: Relation[] = [];
   relationsProjectsList: Relation[] = [];
@@ -120,15 +121,25 @@ export class TaskDetailsComponent {
   getCommentsData() {
 
     this.relationsCommentsList.forEach(commentRelation => {
+
       if (commentRelation.taskId == this.taskId) {
 
         const commentId = commentRelation.commentId;
 
+        const userId = commentRelation.userId;
+
         this.commentService.getCommentById(commentId!).subscribe(async (response: any) => {
 
-          const commentData = response.comment;
+          let commentData = response.comment;
 
-          this.commentList.push(commentData);
+          commentData.userId = userId;
+
+          if(userId == this.userId){
+            this.commentOwnList.push(commentData);
+          }else{
+            this.commentOtherList.push(commentData);
+          }
+
         });
 
       }
@@ -136,7 +147,6 @@ export class TaskDetailsComponent {
       this.workersList.forEach(worker => {
         if (commentRelation.userId = worker.userId) {
           this.workerNameList.push(worker.name);
-          console.log(worker.name);
         }
       });
 
@@ -156,17 +166,31 @@ export class TaskDetailsComponent {
   }
 
   markAsDone() {
-    //TODO
-    // this.taskService.editTask(this.taskId, 'Terminada').subscribe((response: any) => {
-    //   console.log(response);
-    // });
+
+    const { name, description, creationDate, deadline } = this.taskItem;
+
+    this.taskService.editTask(this.taskId, name, description, 'Pendiente', creationDate, deadline).subscribe((response: any) => {
+      alert(response.response || response.error);
+    });
+
   }
 
   markAsNotDone() {
-    //TODO
-    // this.taskService.editTaskStatus(this.taskId, 'Activo').subscribe((response: any) => {
-    //   console.log(response);
-    // });
+
+    const { name, description, creationDate, deadline } = this.taskItem;
+
+    this.taskService.editTask(this.taskId, name, description, 'Activo', creationDate, deadline).subscribe((response: any) => {
+      alert(response.response || response.error);
+    });
+
+  }
+
+  updateComment(){
+
+  }
+
+  deleteComment(){
+
   }
 
 
