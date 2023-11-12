@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionGuard } from 'src/app/guards/session.guard';
+import { Project } from 'src/app/interfaces/interfaces';
+import { ProjectService } from 'src/app/services/api/project.service';
 import * as projectListJSON from 'src/assets/json/projectSample.json';
 
 @Component({
@@ -10,15 +12,23 @@ import * as projectListJSON from 'src/assets/json/projectSample.json';
 })
 export class AdminLandpageComponent implements OnInit {
 
-  protected projectList: any[] = [];
+  projectList: Project[] = [];
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
-   /**
-   * Se obtienen los datos de un archivo JSON.
-   */
+  /**
+  * Se obtienen los datos de un archivo JSON.
+  */
   ngOnInit() {
-    this.projectList = (projectListJSON as any).default;
+
+    this.projectService.getProjectList().subscribe(async response => {
+
+      const projectList: Project[] = await (response as any).projects;
+
+      this.projectList = projectList;
+
+    });
+
   }
 
 }

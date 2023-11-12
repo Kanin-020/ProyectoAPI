@@ -19,11 +19,11 @@ export class RoleGuard implements CanActivate {
             'administrador': [
                 'admin-landpage',
                 'admin-project-creator',
-                'admin-project-modifier',
+                'admin-project-modifier/:projectId',
                 'admin-task-creator',
                 'admin-task-modifier',
-                'admin-task-manager',
-                'admin-user-manager',
+                'admin-task-manager/:projectId',
+                'admin-user-manager/:projectId',
             ],
             'trabajador': [
                 'user-landpage',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SessionGuard } from 'src/app/guards/session.guard';
 
 
@@ -11,17 +11,36 @@ import { SessionGuard } from 'src/app/guards/session.guard';
 })
 export class HeaderComponent implements OnInit {
 
-  userRole = localStorage.getItem('role');
+  userRole: string | null = localStorage.getItem('role');
 
-  constructor(private sessionGuard: SessionGuard, private router: Router) {
+  actualRoute: string = '';
+
+  adminRouteFlag: boolean = false;
+
+  projectId: number = 0;
+
+  constructor(private sessionGuard: SessionGuard, private router: Router, private route: ActivatedRoute) {
     /**
      * Obtiene la bandera de rol para mostrar el contenido adecuado en el header.
-     */
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
+    */
+    this.router.events.subscribe(async event => {
+      if (event instanceof NavigationEnd) {
 
         this.userRole = localStorage.getItem('role');
-        console.log(this.userRole);
+
+        this.actualRoute =  this.router.url;
+
+        if ((this.actualRoute == '/admin-landpage' && this.userRole == 'administrador') || this.actualRoute == '/account-settings') {
+
+          this.adminRouteFlag = true;
+
+        } else {
+
+          this.adminRouteFlag = false;
+
+          this.getProjectId(this.actualRoute);
+        }
+
       }
     });
   }
@@ -34,6 +53,31 @@ export class HeaderComponent implements OnInit {
     this.sessionGuard.logout();
   }
 
+  getProjectId(actualRoute: string) {
 
+    let match = actualRoute.match(/\d+$/);
+
+    if (match) {
+      this.projectId = parseInt(match[0]);
+    } else {
+      this.projectId = 0;
+    }
+
+  }
+
+  navigateProjectModifier(){
+    const projectId = this.projectId;
+    this.router.navigate(['/admin-project-modifier', projectId]);
+  }
+
+  navigateTaskManger(){
+    const projectId = this.projectId;
+    this.router.navigate(['/admin-task-manager', projectId]);
+  }
+
+  navigateUserManger(){
+    const projectId = this.projectId;
+    this.router.navigate(['/admin-user-manager', projectId]);
+  }
 
 }

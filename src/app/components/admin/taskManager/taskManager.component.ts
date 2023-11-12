@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 import { SessionGuard } from 'src/app/guards/session.guard';
 import * as activityListJSON from "src/assets/json/activitySample.json";
 
@@ -11,21 +12,29 @@ import * as activityListJSON from "src/assets/json/activitySample.json";
 })
 export class TaskManagerComponent implements OnInit {
 
-  protected activityList: any[] = [];
+  projectId: number = 0;
 
-  protected page: PageEvent = {
+  activityList: any[] = [];
+
+  page: PageEvent = {
     length: 0,
     pageIndex: 0,
     pageSize: 10,
     previousPageIndex: 0
   };
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.projectId = params['projectId'];
+    });
+  }
 
   /**
    * Se obtienen los datos de un archivo JSON.
    */
   ngOnInit() {
+
+
 
     this.activityList = (activityListJSON as any).default;
     this.page.length = this.activityList.length;

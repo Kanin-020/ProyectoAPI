@@ -22,14 +22,14 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/admin-landpage">Inicio</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin-task-manager">Tareas</a>
+          <li class="nav-item" *ngIf="adminRouteFlag == false">
+            <a class="nav-link active" aria-current="page" (click)="navigateProjectModifier()">Datos del proyecto</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin-user-manager">Directorio</a>
+          <li class="nav-item" *ngIf="adminRouteFlag == false">
+            <a class="nav-link active" aria-current="page" (click)="navigateTaskManger()">Tareas</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/admin-project-modifier">Datos del proyecto</a>
+          <li class="nav-item" *ngIf="adminRouteFlag == false">
+            <a class="nav-link active" aria-current="page" (click)="navigateUserManger()">Directorio</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
