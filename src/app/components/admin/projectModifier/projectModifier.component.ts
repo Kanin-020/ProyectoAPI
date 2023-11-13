@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Project, Relation, User } from 'src/app/interfaces/interfaces';
 import { ProjectService } from 'src/app/services/api/project.service';
@@ -35,7 +35,7 @@ export class ProjectModifierComponent {
 
   formItem!: FormGroup;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private userService: UserService, private relationsProjectsService: RelationsProjectsService) {
+  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService, private userService: UserService, private relationsProjectsService: RelationsProjectsService) {
 
 
     this.route.params.subscribe(params => {
@@ -117,7 +117,7 @@ export class ProjectModifierComponent {
 
     this.relationProjectsList.forEach(relations => {
 
-      if(relations.userId == userId && relations.relation_projectId){
+      if (relations.userId == userId && relations.relation_projectId) {
 
         this.relationsProjectsService.deleteProjectRelation(relations.relation_projectId).subscribe(async (response: any) => {
 
@@ -141,6 +141,10 @@ export class ProjectModifierComponent {
 
     });
 
+  }
+
+  cancelEdition() {
+    this.router.navigate(['/admin-landpage']);
   }
 
 }
