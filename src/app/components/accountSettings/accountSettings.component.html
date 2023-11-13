@@ -5,36 +5,64 @@
         </div>
     </div>
     <div class="py-2">
+        <form (ngSubmit)="editAccountData()" [formGroup]="form">
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">Nombre Completo</label>
-                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="userData.name">
+                    <input type="text" class="form-control" [(ngModel)]="userData.name" formControlName="name">
+                    <div *ngIf="form.get('name')?.hasError('required')" class="alert alert-danger mt-2">
+                      Nombre requerido.
+                    </div>
+                    <div *ngIf="form.get('name')?.hasError('minlength')" class="alert alert-danger mt-2">
+                      El nombre debe tener al menos 2 caracteres de largo.
+                    </div>
                 </div>
             </div>
             <div class="row py-2">
                 <div class="col-md-6">
                     <label for="email">Correo electrónico</label>
-                    <input type="text" class="form-control" placeholder="correo@email.com"[(ngModel)]="userData.email">
+                    <input type="text" class="form-control" [(ngModel)]="userData.email" formControlName="email">
+                    <div *ngIf="form.get('email')?.hasError('required')" class="alert alert-danger mt-2">
+                      Correo electrónico requerido.
+                    </div>
+                    <div *ngIf="form.get('email')?.hasError('email')" class="alert alert-danger mt-2">
+                      Ingrese un correo electrónico válido.
+                    </div>                
                 </div>
                 <div class="col-md-6 pt-md-0 pt-3">
                     <label for="id">ID única de usuario</label>
-                    <input type="number" class="form-control" placeholder="123456" disabled
-                        [(ngModel)]="userData.userId">
+                    <input type="number" class="form-control" [(ngModel)]="userData.userId" formControlName="userId">
                 </div>
             </div>
             <div class="row py-2">
                 <div class="col-md-6">
-                    <label for="old-password">Contraseña vieja</label>
-                    <input type="password" class="form-control" [(ngModel)]="userData.oldPassword" disabled>
+                    <label for="old-password">Contraseña actual</label>
+                    <input type="password" class="form-control" [(ngModel)]="userData.oldPassword" formControlName="oldPassword">
+                    <div *ngIf="form.get('oldPassword')?.hasError('required')" class="alert alert-danger mt-2">
+                      Contraseña actual requerida.
+                    </div>
+                    <div *ngIf="passwordMismatchError">
+                      <p style="color: red;">La contraseña es incorrecta.</p>
+                    </div>
                 </div>
                 <div class="col-md-6 pt-md-0 pt-3">
                     <label for="new-password">Contraseña nueva</label>
-                    <input type="password" class="form-control" [(ngModel)]="userData.password">
+                    <input type="password" class="form-control" [(ngModel)]="userData.password" formControlName="password">
+                    <div *ngIf="form.get('password')?.hasError('required')" class="alert alert-danger mt-2">
+                      Contraseña requerida.
+                    </div>
+                    <div *ngIf="form.get('password')?.hasError('minlength')" class="alert alert-danger mt-2">
+                      La contraseña debe tener al menos 8 caracteres.
+                    </div>
+                    <div *ngIf="form.get('password')?.hasError('pattern')" class="alert alert-danger mt-2">
+                      La contraseña debe contener al menos una letra y un número.
+                    </div>
                 </div>
             </div>
-            <div class="py-3 pb-4 border-bottom">
-                <button class="btn btn-primary mr-3" (click)="editAccountData()">Guardar cambios</button>
+            <div class="py-3 pb-4 border-bottom" >
+                <button class="btn btn-primary mr-3" [disabled]="form.invalid">Actualizar datos</button>
             </div>
+        </form>
         <div class="d-sm-flex align-items-center pt-3" id="deactivate">
             <div>
                 <b>Desactiva tu cuenta</b>

@@ -1,13 +1,13 @@
 <div class="card text-center border-2">
     <div class="card-header">
-        {{taskItem.creationDate}}
+        <h5 class="card-title">{{taskItem.name}}</h5>
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{taskItem.name}}</h5>
         <p class="card-text">Proyecto asignado: {{taskItem.projectName}}</p>
-        <a (click)="openTask()" class="btn btn-primary">Abrir detalles</a>
+        <a (click)="openTask()" class="btn btn-primary mt-2">Abrir detalles</a>
     </div>
     <div class="card-footer text-body-secondary">
-        {{taskItem.deadline}}
+        <p>Asignación: {{taskItem.creationDate}}</p>
+        <p>Entrega: {{taskItem.deadline}}</p>
     </div>
 </div>
