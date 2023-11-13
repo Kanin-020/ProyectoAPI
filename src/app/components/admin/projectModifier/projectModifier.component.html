@@ -4,30 +4,30 @@
         <h1>Configuración de proyecto - ProyectoEjemplo</h1>
       </div>
     </div>
-  
+
     <div class="activity-container card mb-2">
         <div class="row main-row">
             <div class="col-4 py-4">
                 <div class="big-selector m-2">
                     <div class="form-group bordered-container m-2">
                         <p><strong>Nombre del proyecto</strong></p>
-                        <textarea class="form-control" id="task-name" rows="1"></textarea>
+                        <textarea class="form-control" id="task-name" rows="1" [(ngModel)]="projectItem.name"></textarea>
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Descripción</strong></p>
-                        <textarea class="form-control" id="task-description" rows="3"></textarea>
+                        <textarea class="form-control" id="task-description" rows="3" [(ngModel)]="projectItem.description"></textarea>
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Estado</strong></p>
-                        <select id="Select" class="form-select">
-                            <option>En proceso</option>
-                            <option>En hiatus</option>
-                            <option>Finalizado</option>
+                        <select id="Select" class="form-select" [(ngModel)]="projectItem.status">
+                            <option value="En proceso">En proceso</option>
+                            <option value="En hiatus">En hiatus</option>
+                            <option value="Finalizado">Finalizado</option>
                         </select>
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Fecha de entrega</strong></p>
-                        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="projectItem.deadline">
                     </div>
                 </div>
             </div>
@@ -36,17 +36,17 @@
                     <div class="form-group bordered-container rounded">
                         <label class="form-label" for="form1"><strong>Personal asignado</strong></label>
                         <div class="d-flex justify-content-center">
-                            <input type="text" id="form1" class="form-control" placeholder="Id única de usuario"/>
-                            <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75" height="20"></i-bs></button>
+                            <input type="text" id="form1" class="form-control" placeholder="Id única de usuario" [(ngModel)]="addedUserId"/>
+                            <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75" height="20" (click)="addUsersToProject()"></i-bs></button>
                         </div>
                         <div class="my-custom-scrollbar mt-2 ">
-                            <div class="border-bottom row mt-2 mb-0">
-                                <div class="col-8">
-                                    Trabajador x
+                            <div class="border-bottom row mt-2 mb-0" *ngFor="let user of filteredUsersList">
+                                <div class="col-8" >
+                                    {{user.name}}
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-sm btn-warning p-2" type="button" >
-                                        <i-bs name="person-dash-fill" width="75" height="20"></i-bs>
+                                        <i-bs name="person-dash-fill" width="75" height="20" (click)="quitUsersFromProject(user.userId)"></i-bs>
                                     </button>
                                 </div>
                             </div>
@@ -58,14 +58,14 @@
             <div class="big-selector col-2 py-4">
                 <div class="row">
                     <div class="col btn-cont">
-                        <button class="btn btn-lg btn-primary" type="button" onclick="location.href='/admin-landpage'">
+                        <button class="btn btn-lg btn-primary" type="button" (click)="updateProjectData()">
                           Guardar cambios
                         </button>
                     </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col btn-cont">
-                        <button class="btn btn-lg btn-secondary" type="button" onclick="location.href='/admin-landpage'">
+                        <button class="btn btn-lg btn-secondary" type="button" href='/admin-landpage'>
                           Cancelar modificaciones
                         </button>
                     </div>

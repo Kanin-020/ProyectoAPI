@@ -40,6 +40,8 @@ export interface User {
 }
 
 export interface Relation {
+    relation_commentId?: number,
+    relation_projectId?: number,
     projectId?: number,
     commentId?: number,
     taskId: number,

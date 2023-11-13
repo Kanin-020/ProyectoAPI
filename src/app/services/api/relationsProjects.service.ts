@@ -12,7 +12,7 @@ export class RelationsProjectsService {
 
   constructor(private readonly http: HttpClient) { }
 
-  addProjectRelation(projectId: number, taskId: number, userId: number) {
+  addProjectRelation(projectId: number, userId: number, taskId?: number) {
 
     const body = { projectId, taskId, userId };
 
