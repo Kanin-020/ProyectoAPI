@@ -1,50 +1,141 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { SessionGuard } from 'src/app/guards/session.guard';
-import * as taskListJSON from "src/assets/json/taskSample.json";
-
+import { TaskService } from 'src/app/services/api/task.service';
+import { ProjectService } from 'src/app/services/api/project.service';
+import { Project, Relation, Task } from 'src/app/interfaces/interfaces';
+import { RelationsProjectsService } from 'src/app/services/api/relationsProjects.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-taskArchive',
   templateUrl: './taskArchive.component.html',
   styleUrls: ['./taskArchive.component.scss'],
-  providers: [SessionGuard]
+  providers: [SessionGuard],
 })
 export class TaskArchiveComponent implements OnInit {
-  protected taskList: any[] = [];
+  userId: number = parseInt(localStorage.getItem('userId')!);
+
+  taskList: Task[] = [];
+  projectList: Project[] = [];
+  relationsProjectsList: Relation[] = [];
+
+  fullFilTaskList: Task[] = [];
+  filteredTaskList: Task[] = [];
+
+  searchProjectName: string = '';
+  searchTaskName: string = '';
+  minDate: String = new String();
+  maxDate: String = new String();
 
   protected page: PageEvent = {
     length: 0,
     pageIndex: 0,
     pageSize: 10,
-    previousPageIndex: 0
+    previousPageIndex: 0,
   };
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private taskService: TaskService,
+    private projectService: ProjectService,
+    private relationsProjectsService: RelationsProjectsService
+  ) {}
 
+  async ngOnInit() {
+    forkJoin([
+      this.taskService.getTaskList(),
+      this.projectService.getProjectList(),
+      this.relationsProjectsService.getProjectRelationByUserId(this.userId),
+    ]).subscribe(async ([taskResponse, projectResponse, relationsResponse]) => {
+      const taskList: Task[] = await (taskResponse as any).tasks;
+      const projectList: Project[] = await (projectResponse as any).projects;
+      const relationsProjectsList: Relation[] = await (relationsResponse as any)
+        .relations_projects;
 
-  ngOnInit() {
-    this.taskList = (taskListJSON as any).default;
-    this.page.length = this.taskList.length;
+      this.taskList = taskList;
+      this.projectList = projectList;
+      this.relationsProjectsList = relationsProjectsList;
 
-    console.log(this.taskList.length);
-    this.getMinimumDate(this.getDates());
+      this.setProjectToTask();
+    });
   }
 
   /**
-   * Ordena la lista por fecha.
-   * @returns stringDates - Fechas en formatos de texto.
+   * Se realiza la unión de datos para generar las tarjetas correspondientes al usuario.
    */
-  getDates(): String[] {
-    let stringDates: String[] = new Array<String>;
-    this.taskList.forEach(function (task) {
-      stringDates.push(task['fecha-de-entrega']);
-    })
 
-    stringDates.forEach(function (strings) {
-      console.log("String que se les hizo push" + strings);
-    })
-    return stringDates;
+  setProjectToTask() {
+    this.relationsProjectsList.forEach((relation: Relation) => {
+      this.taskList.forEach((task: Task) => {
+        this.projectList.forEach((project: Project) => {
+          if (
+            relation.projectId == project.projectId &&
+            relation.taskId == task.taskId
+          ) {
+            task.projectName = project.name;
+            this.fullFilTaskList.push(task);
+            this.filteredTaskList = this.fullFilTaskList;
+          }
+        });
+      });
+    });
+  }
+
+  filterByProjectName() {
+    this.filteredTaskList = this.fullFilTaskList.filter((task) =>
+      (task.projectName ?? '').includes(this.searchProjectName)
+    );
+  }
+
+  filterByTaskName() {
+    this.filteredTaskList = this.fullFilTaskList.filter((task) =>
+      task.name.includes(this.searchTaskName)
+    );
+  }
+
+  filterByDate() {
+    var minDateFix = new Date();
+    var maxDateFix = new Date();
+    if (typeof this.minDate === 'string') {
+      const [year, month, day] = this.minDate.split('-');
+      minDateFix = new Date(+year, +month - 1, +day);
+    }
+
+    if (typeof this.maxDate === 'string') {
+      const [year, month, day] = this.maxDate.split('-');
+      maxDateFix = new Date(+year, +month - 1, +day);
+    }
+    minDateFix.setHours(0, 0, 0, 0);
+    maxDateFix.setHours(0, 0, 0, 0);
+
+    if (this.minDate <= this.maxDate) {
+      this.filteredTaskList = this.fullFilTaskList.filter((task) => {
+        const [fullDate, fullTime] = task.deadline.split(', ');
+        const [day, month, year] = fullDate.split('/');
+        const [hours, minutes, seconds] = fullTime.split(':');
+        const deadline = new Date(
+          +year,
+          +month - 1,
+          +day,
+          +hours,
+          +minutes,
+          +seconds
+        );
+        deadline.setHours(0, 0, 0, 0);
+
+        return deadline >= minDateFix && deadline <= maxDateFix;
+      });
+    } else {
+      console.error(
+        'La fecha mínima debe ser menor o igual a la fecha máxima.'
+      );
+    }
+  }
+
+  openTask(taskId: number) {
+    this.router.navigate(['/user-task-details', taskId]);
   }
 
   /**
@@ -52,41 +143,8 @@ export class TaskArchiveComponent implements OnInit {
    * @returns today - La fecha del día de hoy en formato de texto.
    */
   getTodaysDate(): string {
-    let today: string = new Date().toISOString().split('T')[0];;
+    let today: string = new Date().toISOString().split('T')[0];
     console.log(today);
     return today;
   }
-
-  //TODO
-  // convertStringToDate(stringsToConvert: string[]): Date{
-  //   return new Date(stringsToConvert[0], stringsToConvert[1], stringsToConvert[2]);
-  // }
-
-
-  /**
-   * Conversión e formato a reducido.
-   * @param stringDates - Las fechas en formato de texto.
-   * @returns formattedDate - Valor de fecha formateado.
-   */
-  getMinimumDate(stringDates: String[]): String {
-    let dates: any[] = [];
-    let minimumDate!: Date;
-    let formattedDate: string;
-
-    stringDates.map(function (string) {
-
-
-      dates.push(new Date(string.split("-").join("/")));
-    })
-
-    minimumDate = new Date(Math.min.apply(null, dates));
-    console.log(minimumDate.toISOString().split('T')[0]);
-
-    formattedDate = minimumDate.toISOString().split('T')[0];
-
-    return formattedDate;
-  }
-
-
 }
-
