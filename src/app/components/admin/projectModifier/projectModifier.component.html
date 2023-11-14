@@ -40,13 +40,13 @@
                             <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75" height="20" (click)="addUsersToProject()"></i-bs></button>
                         </div>
                         <div class="my-custom-scrollbar mt-2 ">
-                            <div class="border-bottom row mt-2 mb-0" *ngFor="let user of filteredUsersList">
+                            <div class="border-bottom row mt-2 mb-0" *ngFor="let user of assignedUsersList">
                                 <div class="col-8" >
                                     {{user.name}}
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-sm btn-warning p-2" type="button" >
-                                        <i-bs name="person-dash-fill" width="75" height="20" (click)="quitUsersFromProject(user.userId)"></i-bs>
+                                        <i-bs name="person-dash-fill" width="75" height="20" (click)="deleteUsersFromProject(user.userId)"></i-bs>
                                     </button>
                                 </div>
                             </div>

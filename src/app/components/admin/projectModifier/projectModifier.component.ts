@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/api/user.service';
   templateUrl: './projectModifier.component.html',
   styleUrls: ['./projectModifier.component.scss']
 })
-export class ProjectModifierComponent {
+export class ProjectModifierComponent implements OnInit {
 
   projectId: number = 0;
 
@@ -31,17 +31,22 @@ export class ProjectModifierComponent {
 
   filteredUsersList: User[] = [];
 
+  assignedUsersList: User[] = [];
+
   relationProjectsList: Relation[] = [];
 
   formItem!: FormGroup;
 
   constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService, private userService: UserService, private relationsProjectsService: RelationsProjectsService) {
 
-
     this.route.params.subscribe(params => {
       this.projectId = params['projectId'];
 
     });
+
+  }
+
+  ngOnInit() {
 
     forkJoin([
       this.projectService.getProjectById(this.projectId),
@@ -51,11 +56,13 @@ export class ProjectModifierComponent {
 
       const projectItem: Project = await (projectResponse as any).project;
       const usersList: User[] = await (userResponse as any).users;
-      const relationProjectsList: Relation[] = await (relationProjectsResponse as any).relations_projects;
+      const relationProjectsList: Relation[] | any = await (relationProjectsResponse as any).relations_projects;
+
 
       this.projectItem = projectItem;
       this.usersList = usersList;
       this.relationProjectsList = relationProjectsList;
+
 
       this.filterUsers();
 
@@ -90,11 +97,13 @@ export class ProjectModifierComponent {
 
     });
 
-    this.filteredUsersList = this.deleteDuplicatedWorkers(filteredUsersList);
+    this.filteredUsersList = this.deleteDuplicatedUsers(filteredUsersList);
+
+    this.assignedUsersList = this.deleteDuplicatedUsers(filteredUsersList);
 
   }
 
-  deleteDuplicatedWorkers(workers: User[]): User[] {
+  deleteDuplicatedUsers(workers: User[]): User[] {
 
     const uniqueSet = new Set(workers);
 
@@ -105,29 +114,23 @@ export class ProjectModifierComponent {
 
   addUsersToProject() {
 
-    this.relationsProjectsService.addProjectRelation(this.projectId, this.addedUserId).subscribe(async (response: any) => {
+    const userId = this.addedUserId;
 
-      alert(response.response || response.error);
-
+    this.usersList.forEach(user => {
+      if (userId == user.userId && !this.assignedUsersList.some(user => user.userId == userId) && userId != 0) {
+        this.assignedUsersList.push(user);
+      }
     });
 
   }
 
-  quitUsersFromProject(userId: number) {
+  deleteUsersFromProject(userId: number) {
 
-    this.relationProjectsList.forEach(relations => {
+    const indexToRemove = this.assignedUsersList.findIndex(user => user.userId === userId);
 
-      if (relations.userId == userId && relations.relation_projectId) {
-
-        this.relationsProjectsService.deleteProjectRelation(relations.relation_projectId).subscribe(async (response: any) => {
-
-          console.log(response);
-
-        });
-
-      }
-
-    });
+    if (indexToRemove !== -1) {
+      this.assignedUsersList.splice(indexToRemove, 1);
+    }
 
   }
 
@@ -138,6 +141,53 @@ export class ProjectModifierComponent {
     this.projectService.editProject(this.projectId, name, description, status, creationDate, deadline).subscribe(async (response: any) => {
 
       alert(response.response || response.error);
+
+      this.userAssignationUpdate();
+
+    });
+
+
+  }
+
+  userAssignationUpdate() {
+
+    let newElements = this.assignedUsersList.filter(user => !this.filteredUsersList.includes(user));
+    let deletedElements = this.filteredUsersList.filter(user => !this.assignedUsersList.includes(user));
+
+    if (newElements.length == 0 && deletedElements.length == 0) {
+      newElements = this.filteredUsersList;
+
+      if (this.filteredUsersList == this.assignedUsersList) {
+        newElements = [];
+      }
+
+    }
+
+    newElements.forEach(user => {
+
+      const userId = user.userId;
+
+      this.relationsProjectsService.addProjectRelation(this.projectId, userId).subscribe(async (response: any) => {
+
+      })
+
+    });
+
+    deletedElements.forEach(user => {
+
+      const userId = user.userId;
+
+      this.relationProjectsList.forEach(relations => {
+
+        if (relations.userId == userId && relations.relation_projectId) {
+
+          this.relationsProjectsService.deleteProjectRelation(relations.relation_projectId).subscribe(async (response: any) => {
+
+          });
+
+        }
+
+      });
 
     });
 
