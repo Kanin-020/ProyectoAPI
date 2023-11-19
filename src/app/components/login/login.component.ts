@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     localStorage.removeItem('token');
-    localStorage.removeItem('secretKey');
     localStorage.removeItem('role');
     localStorage.removeItem('userId');
 
@@ -49,9 +48,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem('userId', response.userId);
         localStorage.setItem('role', response.role);
-
-        localStorage.setItem('token', 'token');
-        localStorage.setItem('secretKey', 'secretKey');
+        localStorage.setItem('token', response.token);
 
         if (response.role == 'trabajador') {
           this.router.navigate(['/user-landpage']);

@@ -12,10 +12,10 @@ export class SessionGuard implements CanActivate {
     canActivate(): boolean {
         // Verifica la sesión del usuario aquí
         const token = localStorage.getItem('token');
+
         let isValid;
 
         if (token) {
-            console.log('Autenticado');
             isValid = true;
         } else {
             // No hay un token en el localStorage, el usuario no está autenticado
@@ -23,6 +23,7 @@ export class SessionGuard implements CanActivate {
             this.router.navigate(['/login']);
             isValid = false;
         }
+
         return isValid;
     }
 
@@ -31,7 +32,6 @@ export class SessionGuard implements CanActivate {
      */
     logout(): void {
         localStorage.removeItem('token');
-        localStorage.removeItem('secretKey');
         localStorage.removeItem('role');
         localStorage.removeItem('userId');
 

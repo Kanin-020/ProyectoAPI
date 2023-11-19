@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,48 +7,85 @@ import { Injectable } from '@angular/core';
 export class RelationsCommentsService {
 
   private readonly API_URL = 'http://localhost:3000/relations-comments';
-  private readonly TOKEN = localStorage.getItem('token');
-  private readonly SECRET_KEY = localStorage.getItem('secretKey');
+  private readonly TOKEN = localStorage.getItem('token') || '';
 
   constructor(private readonly http: HttpClient) { }
 
   addCommentRelation(commentId: number, taskId: number, userId: number) {
 
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
     const body = { commentId, taskId, userId };
 
-    return this.http.post(`${this.API_URL}/add`, body);
+    return this.http.post(`${this.API_URL}/add`, body, { headers });
   }
 
   getCommentRelationList() {
-    return this.http.get(`${this.API_URL}/get-all`);
+
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
+    return this.http.get(`${this.API_URL}/get-all`, { headers });
   }
 
   getCommentRelationById(relationCommentId: number) {
-    return this.http.get(`${this.API_URL}/get/${relationCommentId}`);
+
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
+    return this.http.get(`${this.API_URL}/get/${relationCommentId}`, { headers });
   }
 
   getCommentRelationByCommentId(commentId: number) {
-    return this.http.get(`${this.API_URL}/get/comment/${commentId}`);
+
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
+    return this.http.get(`${this.API_URL}/get/comment/${commentId}`, { headers });
   }
 
   getCommentRelationByTaskId(taskId: number) {
-    return this.http.get(`${this.API_URL}/get/task/${taskId}`);
+
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
+    return this.http.get(`${this.API_URL}/get/task/${taskId}`, { headers });
   }
 
   getCommentRelationByUserId(userId: number) {
-    return this.http.get(`${this.API_URL}/get/user/${userId}`);
+
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
+    return this.http.get(`${this.API_URL}/get/user/${userId}`, { headers });
   }
 
   editCommentRelation(relationCommentId: number, commentId: number, taskId: number, userId: number) {
 
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
     const body = { commentId, taskId, userId };
 
-    return this.http.put(`${this.API_URL}/edit/${relationCommentId}`, body);
+    return this.http.put(`${this.API_URL}/edit/${relationCommentId}`, body, { headers });
 
   }
 
   deleteCommentRelation(relationCommentId: number) {
-    return this.http.delete(`${this.API_URL}/delete/${relationCommentId}`);
+
+    const headers = new HttpHeaders({
+      'Authorization': this.TOKEN,
+    });
+
+    return this.http.delete(`${this.API_URL}/delete/${relationCommentId}`, { headers });
   }
 
 
