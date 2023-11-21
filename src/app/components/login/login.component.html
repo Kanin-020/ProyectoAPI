@@ -26,11 +26,13 @@
 
                 <div class="form-floating">
                     <input type="password" class="form-control" formControlName="password"
-                        [(ngModel)]="userData.password"  required>
+                        [(ngModel)]="userData.password" required>
                     <label for="floatingPassword"></label>
                 </div>
 
-                <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formItem.invalid">Iniciar Sesión</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit"
+                    [disabled]="blockedFormFlag|| formItem.invalid">Iniciar
+                    Sesión</button>
 
             </form>
         </div>
