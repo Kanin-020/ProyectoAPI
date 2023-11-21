@@ -21,7 +21,7 @@ export class RoleGuard implements CanActivate {
                 'admin-project-creator',
                 'admin-project-modifier/:projectId',
                 'admin-task-creator',
-                'admin-task-modifier',
+                'admin-task-modifier/:taskId',
                 'admin-task-manager/:projectId',
                 'admin-user-manager/:projectId',
             ],

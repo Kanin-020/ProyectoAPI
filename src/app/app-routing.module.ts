@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'admin-project-creator', canActivate: [SessionGuard, RoleGuard], component: ProjectCreatorComponent },
   { path: 'admin-project-modifier/:projectId', canActivate: [SessionGuard, RoleGuard], component: ProjectModifierComponent },
   { path: 'admin-task-creator', canActivate: [SessionGuard, RoleGuard], component: TaskCreatorComponent },
-  { path: 'admin-task-modifier', canActivate: [SessionGuard, RoleGuard], component: TaskModifierComponent },
+  { path: 'admin-task-modifier/:taskId', canActivate: [SessionGuard, RoleGuard], component: TaskModifierComponent },
   { path: 'admin-task-manager/:projectId', canActivate: [SessionGuard, RoleGuard], component: TaskManagerComponent },
   { path: 'admin-user-manager/:projectId', canActivate: [SessionGuard, RoleGuard], component: UserManagerComponent },
   { path: 'user-landpage', canActivate: [SessionGuard, RoleGuard], component: UserLandpageComponent },

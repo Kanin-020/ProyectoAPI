@@ -1,7 +1,7 @@
 <div class="container-fluid py-2">
   <div class="row px-2">
     <div class="col">
-      <h1>Directorio de usuarios - NombreProyecto</h1>
+      <h1>Directorio de usuarios - {{projectName}}</h1>
     </div>
   </div>
 
@@ -31,17 +31,17 @@
 
         <tbody>
           <tr
-            *ngFor="let user of userList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
-            <td>{{user['id']}}</td>
+            *ngFor="let user of users | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            <td>{{user['userId']}}</td>
             <td>{{user['name']}}</td>
             <td>{{user['email']}}</td>
             <td>{{user['password']}}</td>
-            <td>{{user['rol']}}</td>
-            <td>{{user['creation_date']}}</td>
-            <td>{{user['last_login']}}</td>
+            <td>{{user['role']}}</td>
+            <td>{{user['creationDate']}}</td>
+            <td>{{user['lastLoginDate']}}</td>
           </tr>
 
-          <tr *ngIf="userList['length'] === 0">
+          <tr *ngIf="users['length'] === 0">
             <td colspan="5">No existen usuarios asociados a este proyecto.</td>
           </tr>
 

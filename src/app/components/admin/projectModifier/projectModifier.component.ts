@@ -15,6 +15,7 @@ import { UserService } from 'src/app/services/api/user.service';
 export class ProjectModifierComponent implements OnInit {
 
   projectId: number = 0;
+  projectName: string = "Proyecto de ejemplo";
 
   projectItem: Project = {
     projectId: 0,
@@ -57,9 +58,10 @@ export class ProjectModifierComponent implements OnInit {
       const projectItem: Project = await (projectResponse as any).project;
       const usersList: User[] = await (userResponse as any).users;
       const relationProjectsList: Relation[] | any = await (relationProjectsResponse as any).relations_projects;
-
+      
 
       this.projectItem = projectItem;
+      this.projectName = projectItem.name;
       this.usersList = usersList;
       this.relationProjectsList = relationProjectsList;
 
