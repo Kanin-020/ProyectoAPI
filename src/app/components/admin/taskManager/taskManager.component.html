@@ -1,7 +1,7 @@
 <div class="container-fluid py-2">
   <div class="row px-2">
     <div class="col">
-      <h1>Registro de tareas - ProyectoEjemplo</h1>
+      <h1>Registro de tareas - {{projectTitle}}</h1>
     </div>
   </div>
 
@@ -40,13 +40,13 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let activity of activityList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
-            <td>{{activity['id']}}</td>
+          <tr *ngFor="let activity of taskList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            <td>{{activity['taskId']}}</td>
             <td>{{activity['name']}}</td>
             <td>{{activity['description']}}</td>
             <td>{{activity['deadline']}}</td>
             <td>{{activity['status']}}</td>
-            <td><button class="btn btn-secondary btn-sm" onclick="location.href='/admin-task-modifier'">Editar</button></td>
+            <td><a class="btn btn-secondary btn-sm"(click)="openTask(activity['taskId'])">Editar</a></td>
           </tr>
 
           <tr *ngIf="activityList['length'] === 0">

@@ -11,15 +11,15 @@
                 <div class="big-selector m-2">
                     <div class="form-group bordered-container m-2">
                         <p><strong>Nombre de la tarea</strong></p>
-                        <textarea class="form-control" id="task-name" rows="1"></textarea>
+                        <textarea class="form-control" id="task-name" rows="1">{{task.name}}</textarea>
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Descripción</strong></p>
-                      <textarea class="form-control" id="task-description" rows="10"></textarea>
+                        <textarea class="form-control" id="task-description" rows="10">{{task.description}}</textarea>
                     </div>
                     <div class="form-group bordered-container m-2">
-                      <p><strong>Fecha de revisión</strong></p>
-                      <input type="date" id="start-date" name="start-date">
+                        <p><strong>Fecha de revisión</strong></p>
+                        <input type="date" id="start-date" name="start-date" placeholder="*To Date" onfocus="(this.type='date')">
                     </div>
                 </div>
             </div>
@@ -33,9 +33,9 @@
                             <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75" height="20"></i-bs></button>
                         </div>
                         <div class="my-custom-scrollbar mt-2 ">
-                            <div class="border-bottom row mt-2 mb-0">
+                            <div *ngFor="let user of users"  class="border-bottom row mt-2 mb-0">
                                 <div class="col-8">
-                                    Trabajador x
+                                    {{user.name}}
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-sm btn-warning p-2" type="button" >
