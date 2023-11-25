@@ -48,13 +48,15 @@ export class LoginComponent implements OnInit {
     this.userService.login(email, password).subscribe(
       (response: any) => {
 
-        localStorage.setItem('userId', response.userId);
-        localStorage.setItem('role', response.role);
-        localStorage.setItem('token', response.token);
-
         if (response.ok == true) {
 
           const role = response.role;
+          const userId = response.userId;
+          const token = response.token;
+
+          localStorage.setItem('userId', userId);
+          localStorage.setItem('role', role);
+          localStorage.setItem('token', token);
 
           this.startSession(role);
 
