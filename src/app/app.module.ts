@@ -31,7 +31,9 @@ import { SessionGuard } from './guards/session.guard';
 import { RoleGuard } from './guards/role.guard';
 import { ProjectItemComponent } from './partials/projectItem/projectItem.component';
 
-import { EmailService } from './services/email.service';
+import { EmailService } from './services/email/email.service';
+import { PdfService } from './services/pdf/pdf.service';
+import { ExcelService } from './services/excel/excel.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -68,7 +70,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     NgxBootstrapIconsModule.pick(allIcons)
   ],
-  providers: [SessionGuard, RoleGuard, EmailService],
+  providers: [SessionGuard, RoleGuard, EmailService, PdfService, ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

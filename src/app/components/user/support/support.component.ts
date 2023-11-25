@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SessionGuard } from 'src/app/guards/session.guard';
-import { EmailService } from 'src/app/services/email.service';
+import { EmailService } from 'src/app/services/email/email.service';
 
 @Component({
   selector: 'app-support',
