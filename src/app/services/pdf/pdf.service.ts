@@ -13,22 +13,15 @@ export class PdfService {
   * @param fileName - El nombre del archivo.
   */
   generatePdf(content: string, fileName: string): void {
-    const pdf = new jsPDF();
-    pdf.text(content, 10, 10); 
+    const pdf = new jsPDF('p', 'in', 'a4');
+
+    var textLines: ""
+    textLines = pdf.setFont('Arial').setFontSize(12).splitTextToSize(content, 7.25);
+
+    let verticalOffset = 0.5;
+    pdf.text(textLines, 0.5, verticalOffset + 12 / 72)
+    verticalOffset += (textLines.length + 0.5) * 12 / 72;
+
     pdf.save(`${fileName}.pdf`);
   }
 }
-
-/**
- * constructor(private pdfService: PdfService) {}
-
-  generatePdf(): void {
-    const documentDefinition = {
-      content: [
-        { text: 'Hello, this is a PDF document!', fontSize: 14, bold: true },
-        // Add more content as needed
-      ],
-    };
-    this.pdfService.generatePdf(documentDefinition, 'example.pdf');
-  }
- */

@@ -14,9 +14,6 @@ import { UserService } from 'src/app/services/api/user.service';
   providers: [SessionGuard]
 })
 
-
-
-
 export class TaskModifierComponent implements OnInit{
 
   taskId: number = 0;
@@ -36,7 +33,6 @@ export class TaskModifierComponent implements OnInit{
   {
     this.route.params.subscribe(params =>{
       this.taskId = params["taskId"];
-      console.log(this.taskId);
     });
   }
 
@@ -47,24 +43,12 @@ export class TaskModifierComponent implements OnInit{
     ]).subscribe(async([taskResponse, relationProjectResponse]) =>{
       this.task = await(taskResponse as any).task;
       const relationProjectTaskOnUsers: Relation[] = await(relationProjectResponse as any).relations_projects;
-      console.log(this.task.deadline); //dia / mes / año
-      this.dateTask = this.datePlaceholder();
+      this.dateTask = this.task.deadline;
       this.relationProjectTaskOnUsers = relationProjectTaskOnUsers;
-      console.log(this.relationProjectTaskOnUsers);
 
       this.getUsersIdsAssignedToATask();
-      console.log(this.usersId);
       this.getUsersAssignedToATask(this.usersId);
-      console.log(this.users);
     })
-  }
-
-  datePlaceholder() : string{
-    const taskDate: string[]  = this.task.deadline.split(",");
-    const dateFormat = taskDate[0].split("/");
-    let dateFormated: string = dateFormat[1] + "/" + dateFormat[0] + "/" + dateFormat[2];
-    
-    return dateFormated;
   }
 
   async getUsersIdsAssignedToATask(){

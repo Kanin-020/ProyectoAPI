@@ -20,16 +20,3 @@ export class ExcelService {
   }
 }
 
-/**
- * constructor(private excelService: ExcelService) {}
- 
-  generateExcel(): void {
-    const data = [
-      { Name: 'John Doe', Age: 30, City: 'New York' },
-      { Name: 'Jane Doe', Age: 25, City: 'San Francisco' },
-      // Add more data as needed
-    ];
-    this.excelService.generateExcel(data, 'Sheet1', 'example');
-  }
- */
-
