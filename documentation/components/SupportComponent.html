@@ -1,0 +1,737 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>spa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">spa documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SupportComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/user/support/support.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../guards/SessionGuard.html" target="_self" >SessionGuard</a></code>
+                                <code><a href="../injectables/EmailService.html" target="_self" >EmailService</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-support</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./support.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./support.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#sendRequest" >sendRequest</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#callMailService" >callMailService</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(emailService: <a href="../injectables/EmailService.html" target="_self">EmailService</a>, fb: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/user/support/support.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>emailService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EmailService.html" target="_self" >EmailService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="callMailService"></a>
+                    <span class="name">
+                        <span ><b>callMailService</b></span>
+                        <a href="#callMailService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>callMailService()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/components/user/support/support.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Realiza la llamada al servicio de correo para enviar una petición.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">src/app/components/user/support/support.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/user/support/support.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendRequest"></a>
+                    <span class="name">
+                        <span ><b>sendRequest</b></span>
+                        <a href="#sendRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/user/support/support.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { SessionGuard } from &#x27;src/app/guards/session.guard&#x27;;
+import { EmailService } from &#x27;src/app/services/email/email.service&#x27;;
+
+@Component({
+  selector: &#x27;app-support&#x27;,
+  templateUrl: &#x27;./support.component.html&#x27;,
+  styleUrls: [&#x27;./support.component.scss&#x27;],
+  providers: [SessionGuard, EmailService],
+})
+export class SupportComponent implements OnInit {
+  sendRequest: string &#x3D; &#x27;&#x27;;
+  form!: FormGroup;
+
+  constructor(private emailService: EmailService, private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.form &#x3D; this.fb.group({
+      sendRequest: [this.sendRequest, Validators.required],
+    });
+  }
+
+  /**
+   * Realiza la llamada al servicio de correo para enviar una petición.
+   */
+  callMailService() {
+    if (this.form.valid) {
+      this.emailService.sendSupportEmail(&#x27;NombreEjemplo&#x27;, this.sendRequest);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;.container-fluid&quot;&gt;
+  &lt;div class&#x3D;&quot;hero1 px-4 py-5 text-center&quot;&gt;
+    &lt;h1 class&#x3D;&quot;h4 fw-bold mb-0&quot;&gt;Soporte&lt;/h1&gt;
+    &lt;h1 class&#x3D;&quot;display-8 fw-bold mb-5&quot;&gt;Preguntas frecuentes&lt;/h1&gt;
+
+    &lt;div class&#x3D;&quot;container my-2&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+        &lt;strong class&#x3D;&quot;p-2&quot;&gt;¿Cómo puedo asignar tareas a diferentes miembros del equipo?&lt;/strong&gt;
+        &lt;button class&#x3D;&quot;btn text-right p-2&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#collapseDescription1&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseDescription1&quot;&gt;
+          +
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;collapse&quot; id&#x3D;&quot;collapseDescription1&quot;&gt;
+        &lt;hr class&#x3D;&quot;dropdown-divider&quot;&gt;
+        &lt;div&gt;
+          Para asignar tareas a miembros específicos, ve a la sección de &quot;Tareas&quot; dentro de tu proyecto. Allí, encontrarás la opción de asignar cada tarea a un miembro del equipo. Simplemente elige el nombre del miembro deseado en el menú desplegable y guarda los cambios.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;container my-2&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+        &lt;strong class&#x3D;&quot;p-2&quot;&gt;¿Cómo puedo actualizar el estado de un proyecto?&lt;/strong&gt;
+        &lt;button class&#x3D;&quot;btn text-right p-2&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#collapseDescription2&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseDescription2&quot;&gt;
+          +
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;collapse&quot; id&#x3D;&quot;collapseDescription2&quot;&gt;
+        &lt;hr class&#x3D;&quot;dropdown-divider&quot;&gt;
+        &lt;div&gt;
+          Para actualizar el estado de un proyecto, navega a la página principal del proyecto y busca la opción &quot;Estado&quot;. Puedes elegir entre opciones como &quot;En Progreso&quot;, &quot;Completado&quot; o cualquier otro estado personalizado que hayas configurado. Asegúrate de guardar los cambios para reflejar la actualización del estado.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;container my-2&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+        &lt;strong class&#x3D;&quot;p-2&quot;&gt; ¿Es posible establecer fechas límite para las tareas?&lt;/strong&gt;
+        &lt;button class&#x3D;&quot;btn text-right p-2&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#collapseDescription3&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseDescription3&quot;&gt;
+          +
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;collapse&quot; id&#x3D;&quot;collapseDescription3&quot;&gt;
+        &lt;hr class&#x3D;&quot;dropdown-divider&quot;&gt;
+        &lt;div&gt;
+          Sí, puedes establecer fechas límite para las tareas. Al editar una tarea en la sección correspondiente, encontrarás un campo para la &quot;Fecha de Vencimiento&quot;. Simplemente selecciona la fecha deseada y guarda la tarea. Recibirás recordatorios automáticos conforme se acerque la fecha límite.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;container my-2&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+        &lt;strong class&#x3D;&quot;p-2&quot;&gt;¿Cómo puedo agregar nuevos usuarios al proyecto?&lt;/strong&gt;
+        &lt;button class&#x3D;&quot;btn text-right p-2&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#collapseDescription4&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseDescription4&quot;&gt;
+          +
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;collapse&quot; id&#x3D;&quot;collapseDescription4&quot;&gt;
+        &lt;hr class&#x3D;&quot;dropdown-divider&quot;&gt;
+        &lt;div&gt;
+          Para agregar nuevos usuarios al proyecto, ve a la sección de &quot;Miembros&quot; o &quot;Colaboradores&quot; dentro de la configuración del proyecto. Allí, encontrarás la opción de invitar nuevos usuarios. Ingresa sus direcciones de correo electrónico y asigna los roles correspondientes, luego envía las invitaciones.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;container my-2&quot;&gt;
+      &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+        &lt;strong class&#x3D;&quot;p-2&quot;&gt;¿Qué debo hacer si olvidé mi contraseña para acceder a la plataforma?&lt;/strong&gt;
+        &lt;button class&#x3D;&quot;btn text-right p-2&quot; type&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#collapseDescription5&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;collapseDescription5&quot;&gt;
+          +
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;collapse&quot; id&#x3D;&quot;collapseDescription5&quot;&gt;
+        &lt;hr class&#x3D;&quot;dropdown-divider&quot;&gt;
+        &lt;div&gt;
+          Si olvidaste tu contraseña, ve a la página de inicio de sesión y haz clic en &quot;¿Olvidaste tu contraseña?&quot;. Se te pedirá que ingreses tu dirección de correo electrónico asociada a la cuenta. Recibirás un enlace para restablecer la contraseña en tu correo electrónico. Sigue las instrucciones del correo para crear una nueva contraseña y acceder nuevamente a tu cuenta.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;hero2 px-4 py-5 text-center&quot;&gt;
+    &lt;h1 class&#x3D;&quot;h4 fw-bold mb-0&quot;&gt;¿Necesita ayuda?&lt;/h1&gt;
+    &lt;h1 class&#x3D;&quot;display-8 fw-bold&quot;&gt;Mandar un ticket&lt;/h1&gt;
+    &lt;div class&#x3D;&quot;col-lg-6 mx-auto&quot;&gt;
+      &lt;p class&#x3D;&quot;lead mb-4&quot;&gt;&lt;strong&gt;Envíe su duda y nuestro equipo de soporte se pondrá en contacto con usted mediante su correo electrónico.&lt;/strong&gt;&lt;/p&gt;
+      &lt;div class&#x3D;&quot;d-grid gap-2 d-sm-flex justify-content-sm-center&quot;&gt;
+        &lt;form class&#x3D;&quot;d-flex&quot; (ngSubmit)&#x3D;&quot;callMailService()&quot; [formGroup]&#x3D;&quot;form&quot;&gt;
+          &lt;input class&#x3D;&quot;form-control me-2&quot; type&#x3D;&quot;search&quot; [(ngModel)]&#x3D;&quot;sendRequest&quot; formControlName&#x3D;&quot;sendRequest&quot;&gt;
+          &lt;button class&#x3D;&quot;btn btn-primary&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form.invalid&quot;&gt;Enviar&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+      &lt;p&gt;&lt;small&gt;Recibirá un correo de respuesta en el plazo de una semana, si no recive respuesta, comuniquese al correo &quot;placeholder@correo.com&quot;.&lt;/small&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./support.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.container-fluid{
+    width: auto;
+    min-height:80vh;
+}
+
+.hero1{
+    background-color: var(--light-color);
+}
+
+.h4{
+    color: var(--primary-color);
+}
+
+.container{
+    background-color: var(--clear-color);
+    width: 50vw;
+    width: 50%;
+    margin: auto;
+}
+
+.form-control{
+    width: 20vw;
+    background-color: var(--light-color);
+    border-color: var(--light-color);
+    color: var(--text-color);
+}
+
+small{
+    color: var(--dark-color);
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class=".container-fluid">  <div class="hero1 px-4 py-5 text-center">    <h1 class="h4 fw-bold mb-0">Soporte</h1>    <h1 class="display-8 fw-bold mb-5">Preguntas frecuentes</h1>    <div class="container my-2">      <div class="d-flex justify-content-between align-items-center">        <strong class="p-2">¿Cómo puedo asignar tareas a diferentes miembros del equipo?</strong>        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription1" aria-expanded="false" aria-controls="collapseDescription1">          +        </button>      </div>      <div class="collapse" id="collapseDescription1">        <hr class="dropdown-divider">        <div>          Para asignar tareas a miembros específicos, ve a la sección de "Tareas" dentro de tu proyecto. Allí, encontrarás la opción de asignar cada tarea a un miembro del equipo. Simplemente elige el nombre del miembro deseado en el menú desplegable y guarda los cambios.        </div>      </div>    </div>    <div class="container my-2">      <div class="d-flex justify-content-between align-items-center">        <strong class="p-2">¿Cómo puedo actualizar el estado de un proyecto?</strong>        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription2" aria-expanded="false" aria-controls="collapseDescription2">          +        </button>      </div>      <div class="collapse" id="collapseDescription2">        <hr class="dropdown-divider">        <div>          Para actualizar el estado de un proyecto, navega a la página principal del proyecto y busca la opción "Estado". Puedes elegir entre opciones como "En Progreso", "Completado" o cualquier otro estado personalizado que hayas configurado. Asegúrate de guardar los cambios para reflejar la actualización del estado.        </div>      </div>    </div>    <div class="container my-2">      <div class="d-flex justify-content-between align-items-center">        <strong class="p-2"> ¿Es posible establecer fechas límite para las tareas?</strong>        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription3" aria-expanded="false" aria-controls="collapseDescription3">          +        </button>      </div>      <div class="collapse" id="collapseDescription3">        <hr class="dropdown-divider">        <div>          Sí, puedes establecer fechas límite para las tareas. Al editar una tarea en la sección correspondiente, encontrarás un campo para la "Fecha de Vencimiento". Simplemente selecciona la fecha deseada y guarda la tarea. Recibirás recordatorios automáticos conforme se acerque la fecha límite.        </div>      </div>    </div>    <div class="container my-2">      <div class="d-flex justify-content-between align-items-center">        <strong class="p-2">¿Cómo puedo agregar nuevos usuarios al proyecto?</strong>        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription4" aria-expanded="false" aria-controls="collapseDescription4">          +        </button>      </div>      <div class="collapse" id="collapseDescription4">        <hr class="dropdown-divider">        <div>          Para agregar nuevos usuarios al proyecto, ve a la sección de "Miembros" o "Colaboradores" dentro de la configuración del proyecto. Allí, encontrarás la opción de invitar nuevos usuarios. Ingresa sus direcciones de correo electrónico y asigna los roles correspondientes, luego envía las invitaciones.        </div>      </div>    </div>    <div class="container my-2">      <div class="d-flex justify-content-between align-items-center">        <strong class="p-2">¿Qué debo hacer si olvidé mi contraseña para acceder a la plataforma?</strong>        <button class="btn text-right p-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription5" aria-expanded="false" aria-controls="collapseDescription5">          +        </button>      </div>      <div class="collapse" id="collapseDescription5">        <hr class="dropdown-divider">        <div>          Si olvidaste tu contraseña, ve a la página de inicio de sesión y haz clic en "¿Olvidaste tu contraseña?". Se te pedirá que ingreses tu dirección de correo electrónico asociada a la cuenta. Recibirás un enlace para restablecer la contraseña en tu correo electrónico. Sigue las instrucciones del correo para crear una nueva contraseña y acceder nuevamente a tu cuenta.        </div>      </div>    </div>  </div>  <div class="hero2 px-4 py-5 text-center">    <h1 class="h4 fw-bold mb-0">¿Necesita ayuda?</h1>    <h1 class="display-8 fw-bold">Mandar un ticket</h1>    <div class="col-lg-6 mx-auto">      <p class="lead mb-4"><strong>Envíe su duda y nuestro equipo de soporte se pondrá en contacto con usted mediante su correo electrónico.</strong></p>      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">        <form class="d-flex" (ngSubmit)="callMailService()" [formGroup]="form">          <input class="form-control me-2" type="search" [(ngModel)]="sendRequest" formControlName="sendRequest">          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Enviar</button>        </form>      </div>      <p><small>Recibirá un correo de respuesta en el plazo de una semana, si no recive respuesta, comuniquese al correo "placeholder@correo.com".</small></p>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-aboutUs'},{'name': 'AccountSettingsComponent', 'selector': 'app-accountSettings'},{'name': 'AdminLandpageComponent', 'selector': 'app-landpage'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProjectCreatorComponent', 'selector': 'app-projectCreator'},{'name': 'ProjectItemComponent', 'selector': 'app-projectItem'},{'name': 'ProjectModifierComponent', 'selector': 'app-project-modifier'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SupportComponent', 'selector': 'app-support'},{'name': 'TaskArchiveComponent', 'selector': 'app-taskArchive'},{'name': 'TaskCreatorComponent', 'selector': 'app-taskCreator'},{'name': 'TaskDetailsComponent', 'selector': 'app-taskDetails'},{'name': 'TaskItemComponent', 'selector': 'app-taskItem'},{'name': 'TaskManagerComponent', 'selector': 'app-taskManager'},{'name': 'TaskModifierComponent', 'selector': 'app-taskModifier'},{'name': 'UserLandpageComponent', 'selector': 'app-user-landpage'},{'name': 'UserManagerComponent', 'selector': 'app-userManager'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SupportComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SupportComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

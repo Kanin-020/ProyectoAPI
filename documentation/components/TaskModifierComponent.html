@@ -1,0 +1,1776 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>spa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">spa documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TaskModifierComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/admin/taskModifier/taskModifier.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../guards/SessionGuard.html" target="_self" >SessionGuard</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-taskModifier</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./taskModifier.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./taskModifier.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#assignedWorkersList" >assignedWorkersList</a>
+                            </li>
+                            <li>
+                                <a href="#commentItem" >commentItem</a>
+                            </li>
+                            <li>
+                                <a href="#commentList" >commentList</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#newCommentContent" >newCommentContent</a>
+                            </li>
+                            <li>
+                                <a href="#page" >page</a>
+                            </li>
+                            <li>
+                                <a href="#projectId" >projectId</a>
+                            </li>
+                            <li>
+                                <a href="#projectItem" >projectItem</a>
+                            </li>
+                            <li>
+                                <a href="#relationsCommentsList" >relationsCommentsList</a>
+                            </li>
+                            <li>
+                                <a href="#relationsProjectsList" >relationsProjectsList</a>
+                            </li>
+                            <li>
+                                <a href="#taskId" >taskId</a>
+                            </li>
+                            <li>
+                                <a href="#taskItem" >taskItem</a>
+                            </li>
+                            <li>
+                                <a href="#userId" >userId</a>
+                            </li>
+                            <li>
+                                <a href="#workersList" >workersList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteActivity" >deleteActivity</a>
+                            </li>
+                            <li>
+                                <a href="#deleteComment" >deleteComment</a>
+                            </li>
+                            <li>
+                                <a href="#getCommentsData" >getCommentsData</a>
+                            </li>
+                            <li>
+                                <a href="#getProjectData" >getProjectData</a>
+                            </li>
+                            <li>
+                                <a href="#getUserName" >getUserName</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToTaskManager" >navigateToTaskManager</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveChanges" >saveChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, router: Router, taskService: <a href="../injectables/TaskService.html" target="_self">TaskService</a>, projectService: <a href="../injectables/ProjectService.html" target="_self">ProjectService</a>, commentService: <a href="../injectables/CommentService.html" target="_self">CommentService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, relationsCommentsService: <a href="../injectables/RelationsCommentsService.html" target="_self">RelationsCommentsService</a>, relationsProjectsService: <a href="../injectables/RelationsProjectsService.html" target="_self">RelationsProjectsService</a>, fb: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:72</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>taskService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TaskService.html" target="_self" >TaskService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>projectService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProjectService.html" target="_self" >ProjectService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>commentService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CommentService.html" target="_self" >CommentService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>relationsCommentsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RelationsCommentsService.html" target="_self" >RelationsCommentsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>relationsProjectsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RelationsProjectsService.html" target="_self" >RelationsProjectsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteActivity"></a>
+                    <span class="name">
+                        <span ><b>deleteActivity</b></span>
+                        <a href="#deleteActivity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteActivity()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="204"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:204</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteComment"></a>
+                    <span class="name">
+                        <span ><b>deleteComment</b></span>
+                        <a href="#deleteComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteComment(comment: <a href="../interfaces/Comment.html" target="_self">Comment</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>comment</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Comment.html" target="_self" >Comment</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCommentsData"></a>
+                    <span class="name">
+                        <span ><b>getCommentsData</b></span>
+                        <a href="#getCommentsData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCommentsData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProjectData"></a>
+                    <span class="name">
+                        <span ><b>getProjectData</b></span>
+                        <a href="#getProjectData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProjectData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserName"></a>
+                    <span class="name">
+                        <span ><b>getUserName</b></span>
+                        <a href="#getUserName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserName(searchUserId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchUserId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToTaskManager"></a>
+                    <span class="name">
+                        <span ><b>navigateToTaskManager</b></span>
+                        <a href="#navigateToTaskManager"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToTaskManager()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="200"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:200</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveChanges"></a>
+                    <span class="name">
+                        <span ><b>saveChanges</b></span>
+                        <a href="#saveChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="189"
+                                    class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:189</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="assignedWorkersList"></a>
+                    <span class="name">
+                        <span ><b>assignedWorkersList</b></span>
+                        <a href="#assignedWorkersList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commentItem"></a>
+                    <span class="name">
+                        <span ><b>commentItem</b></span>
+                        <a href="#commentItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Comment.html" target="_self" >Comment</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    commentId: 0,
+    taskId: 0,
+    userId: 0,
+    status: &#x27;&#x27;,
+    content: &#x27;&#x27;,
+    date: &#x27;&#x27;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commentList"></a>
+                    <span class="name">
+                        <span ><b>commentList</b></span>
+                        <a href="#commentList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Comment.html" target="_self" >Comment[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newCommentContent"></a>
+                    <span class="name">
+                        <span ><b>newCommentContent</b></span>
+                        <a href="#newCommentContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="page"></a>
+                    <span class="name">
+                        <span ><b>page</b></span>
+                        <a href="#page"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>PageEvent</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    length: 0,
+    pageIndex: 0,
+    pageSize: 10,
+    previousPageIndex: 0,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="projectId"></a>
+                    <span class="name">
+                        <span ><b>projectId</b></span>
+                        <a href="#projectId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="projectItem"></a>
+                    <span class="name">
+                        <span ><b>projectItem</b></span>
+                        <a href="#projectItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Project.html" target="_self" >Project</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    projectId: 0,
+    name: &#x27;&#x27;,
+    description: &#x27;&#x27;,
+    status: &#x27;&#x27;,
+    creationDate: &#x27;&#x27;,
+    deadline: &#x27;&#x27;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="relationsCommentsList"></a>
+                    <span class="name">
+                        <span ><b>relationsCommentsList</b></span>
+                        <a href="#relationsCommentsList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Relation.html" target="_self" >Relation[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="relationsProjectsList"></a>
+                    <span class="name">
+                        <span ><b>relationsProjectsList</b></span>
+                        <a href="#relationsProjectsList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Relation.html" target="_self" >Relation[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="taskId"></a>
+                    <span class="name">
+                        <span ><b>taskId</b></span>
+                        <a href="#taskId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="taskItem"></a>
+                    <span class="name">
+                        <span ><b>taskItem</b></span>
+                        <a href="#taskItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Task.html" target="_self" >Task</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    taskId: 0,
+    projectId: 0,
+    name: &#x27;&#x27;,
+    description: &#x27;&#x27;,
+    status: &#x27;&#x27;,
+    creationDate: &#x27;&#x27;,
+    deadline: &#x27;&#x27;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userId"></a>
+                    <span class="name">
+                        <span ><b>userId</b></span>
+                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>parseInt(localStorage.getItem(&#x27;userId&#x27;)!)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="workersList"></a>
+                    <span class="name">
+                        <span ><b>workersList</b></span>
+                        <a href="#workersList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/admin/taskModifier/taskModifier.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+import { SessionGuard } from &#x27;src/app/guards/session.guard&#x27;;
+import { Project, Task, Comment, User, Relation, } from &#x27;src/app/interfaces/interfaces&#x27;;
+import { RelationsProjectsService } from &#x27;src/app/services/api/relationsProjects.service&#x27;;
+import { TaskService } from &#x27;src/app/services/api/task.service&#x27;;
+import { UserService } from &#x27;src/app/services/api/user.service&#x27;;
+import { ProjectService } from &#x27;src/app/services/api/project.service&#x27;;
+import { CommentService } from &#x27;src/app/services/api/comment.service&#x27;;
+import { PageEvent } from &#x27;@angular/material/paginator&#x27;;
+import { RelationsCommentsService } from &#x27;src/app/services/api/relationsComments.service&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+
+@Component({
+  selector: &#x27;app-taskModifier&#x27;,
+  templateUrl: &#x27;./taskModifier.component.html&#x27;,
+  styleUrls: [&#x27;./taskModifier.component.scss&#x27;],
+  providers: [SessionGuard]
+})
+
+export class TaskModifierComponent implements OnInit {
+  page: PageEvent &#x3D; {
+    length: 0,
+    pageIndex: 0,
+    pageSize: 10,
+    previousPageIndex: 0,
+  };
+
+  workersList: User[] &#x3D; [];
+  assignedWorkersList: string[] &#x3D; [];
+  commentList: Comment[] &#x3D; [];
+
+  relationsCommentsList: Relation[] &#x3D; [];
+  relationsProjectsList: Relation[] &#x3D; [];
+
+  projectId: any;
+
+  taskId: number &#x3D; 0;
+  userId: number &#x3D; parseInt(localStorage.getItem(&#x27;userId&#x27;)!);
+
+  newCommentContent: string &#x3D; &#x27;&#x27;;
+
+  taskItem: Task &#x3D; {
+    taskId: 0,
+    projectId: 0,
+    name: &#x27;&#x27;,
+    description: &#x27;&#x27;,
+    status: &#x27;&#x27;,
+    creationDate: &#x27;&#x27;,
+    deadline: &#x27;&#x27;,
+  };
+
+  projectItem: Project &#x3D; {
+    projectId: 0,
+    name: &#x27;&#x27;,
+    description: &#x27;&#x27;,
+    status: &#x27;&#x27;,
+    creationDate: &#x27;&#x27;,
+    deadline: &#x27;&#x27;,
+  };
+
+  commentItem: Comment &#x3D; {
+    commentId: 0,
+    taskId: 0,
+    userId: 0,
+    status: &#x27;&#x27;,
+    content: &#x27;&#x27;,
+    date: &#x27;&#x27;,
+  };
+
+  form!: FormGroup;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private taskService: TaskService,
+    private projectService: ProjectService,
+    private commentService: CommentService,
+    private userService: UserService,
+    private relationsCommentsService: RelationsCommentsService,
+    private relationsProjectsService: RelationsProjectsService,
+    private fb: FormBuilder
+  ) {
+    this.route.params.subscribe((params) &#x3D;&gt; {
+      this.taskId &#x3D; params[&#x27;taskId&#x27;];
+    });
+  }
+
+  async ngOnInit() {
+    forkJoin([
+      this.taskService.getTaskById(this.taskId),
+      this.userService.getWorkersList(),
+      this.relationsCommentsService.getCommentRelationByTaskId(this.taskId),
+      this.relationsProjectsService.getProjectRelationByTaskId(this.taskId),
+    ]).subscribe(
+      async ([
+        taskResponse,
+        workerResponse,
+        relationCommentsResponse,
+        relationProjectsResponse,
+      ]) &#x3D;&gt; {
+        const taskItem: Task &#x3D; await (taskResponse as any).task;
+        const workersList: User[] &#x3D; await (workerResponse as any).workers;
+        const relationCommentsList: Relation[] &#x3D; await (
+          relationCommentsResponse as any
+        ).relations_comments;
+        const relationProjectsList: Relation[] &#x3D; await (
+          relationProjectsResponse as any
+        ).relations_projects;
+
+        this.taskItem &#x3D; taskItem;
+        this.workersList &#x3D; workersList;
+        this.relationsCommentsList &#x3D; relationCommentsList;
+        this.relationsProjectsList &#x3D; relationProjectsList;
+
+        this.getProjectData();
+        this.getCommentsData();
+      }
+    );
+
+    this.form &#x3D; this.fb.group({
+      taskId: [{ value: this.taskItem.taskId, disabled: true },Validators.required,],
+      name: [{ value: this.taskItem.name },[Validators.required, Validators.minLength(2)],],
+      description: [{ value: this.taskItem.description }, [Validators.required, Validators.minLength(2)]],
+      status: [{ value: this.taskItem.status }],
+      deadline: [{ value: this.taskItem.deadline }],
+    });
+  }
+
+  getProjectData() {
+    this.relationsProjectsList.forEach((projectRelation) &#x3D;&gt; {
+      if (projectRelation.taskId &#x3D;&#x3D; this.taskId) {
+        this.projectId &#x3D; projectRelation.projectId;
+
+        this.projectService
+          .getProjectById(this.projectId!)
+          .subscribe(async (response: any) &#x3D;&gt; {
+            const projectData &#x3D; response.project;
+            this.projectItem &#x3D; projectData;
+          });
+        this.workersList.forEach((worker) &#x3D;&gt; {
+          if (projectRelation.userId &#x3D;&#x3D; worker.userId) {
+            this.assignedWorkersList.push(worker.name);
+          }
+        });
+      }
+    });
+  }
+
+  getCommentsData() {
+    this.relationsCommentsList.forEach((commentRelation) &#x3D;&gt; {
+      if (commentRelation.taskId &#x3D;&#x3D; this.taskId) {
+        const commentId &#x3D; commentRelation.commentId;
+        const userId &#x3D; commentRelation.userId;
+
+        this.commentService
+          .getCommentById(commentId!)
+          .subscribe(async (response: any) &#x3D;&gt; {
+            let commentData &#x3D; response.comment;
+            commentData.userId &#x3D; userId;
+            this.commentList.push(commentData);
+          });
+      }
+    });
+  }
+
+  getUserName(searchUserId: number): string {
+    var name &#x3D; &#x27;&#x27;;
+    this.workersList.forEach((worker) &#x3D;&gt; {
+      if (worker.userId &#x3D;&#x3D; searchUserId) {
+        name &#x3D; worker.name;
+      }
+    });
+    return name;
+  }
+
+  deleteComment(comment: Comment) {
+    const { commentId } &#x3D; comment;
+
+    this.commentService
+      .deleteComment(commentId)
+      .subscribe(async (response: any) &#x3D;&gt; {
+        alert(response.response || response.error);
+      });
+
+  }
+
+  saveChanges() {
+    const taskId: number &#x3D; this.taskId;
+    const { name, description, status, creationDate, deadline } &#x3D; this.taskItem;
+
+    this.taskService.editTask(taskId, name, description, status, creationDate, deadline).subscribe(async (response: any) &#x3D;&gt; {
+      alert(response.response || response.error);
+    });
+
+    this.router.navigate([&#x27;/admin-task-manager/&#x27;, this.projectId]);
+  }
+
+  navigateToTaskManager() {
+    this.router.navigate([&#x27;/admin-task-manager/&#x27;, this.projectId]);
+  }
+
+  deleteActivity() {
+    const taskId: number &#x3D; this.taskId;
+    this.taskService.deleteTask(taskId).subscribe(async (response: any) &#x3D;&gt; {
+      alert(response.response || response.error);
+    });
+    this.router.navigate([&#x27;/admin-task-manager/&#x27;, this.projectId]);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid py-2&quot;&gt;
+    &lt;div class&#x3D;&quot;row px-2&quot;&gt;
+        &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;h1&gt;Modificar información de la tarea&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;form (ngSubmit)&#x3D;&quot;saveChanges()&quot; [formGroup]&#x3D;&quot;form&quot;&gt;
+        &lt;div class&#x3D;&quot;activity-container card&quot;&gt;
+            &lt;div class&#x3D;&quot;row main-row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-4 py-4&quot;&gt;
+                    &lt;div class&#x3D;&quot;big-selector m-2&quot;&gt;
+                            &lt;div class&#x3D;&quot;bordered-container m-2&quot;&gt;
+                                &lt;p&gt;&lt;strong&gt;Proyecto: {{projectItem.name}}&lt;/strong&gt;&lt;/p&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;form-group bordered-container m-2&quot;&gt;
+                                &lt;p&gt;&lt;strong&gt;Nombre de la tarea&lt;/strong&gt;&lt;/p&gt;
+                                &lt;textarea class&#x3D;&quot;form-control&quot; id&#x3D;&quot;task-name&quot; rows&#x3D;&quot;1&quot; [(ngModel)]&#x3D;&quot;taskItem.name&quot; formControlName&#x3D;&quot;name&quot;&gt;{{projectItem.name}}&lt;/textarea&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;form-group bordered-container m-2&quot;&gt;
+                                &lt;p&gt;&lt;strong&gt;Descripción&lt;/strong&gt;&lt;/p&gt;
+                                &lt;textarea class&#x3D;&quot;form-control&quot; id&#x3D;&quot;task-description&quot; rows&#x3D;&quot;10&quot; [(ngModel)]&#x3D;&quot;taskItem.description&quot; formControlName&#x3D;&quot;description&quot;&gt;{{projectItem.description}}&lt;/textarea&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;form-group bordered-container m-2&quot;&gt;
+                                &lt;p&gt;&lt;strong&gt;Fecha de revisión&lt;/strong&gt;&lt;/p&gt;
+                                &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;string&quot; id&#x3D;&quot;start-date&quot; name&#x3D;&quot;start-date&quot; placeholder&#x3D;{{taskItem.deadline}}
+                                    onfocus&#x3D;&quot;(this.type&#x3D;&#x27;date&#x27;)&quot; [(ngModel)]&#x3D;&quot;taskItem.deadline&quot; formControlName&#x3D;&quot;deadline&quot;&gt;
+                            &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;col-4 py-4&quot;&gt;
+                    &lt;div class&#x3D;&quot;big-selector m-2&quot;&gt;
+                        &lt;div class&#x3D;&quot;form-group bordered-container rounded&quot;&gt;
+                            &lt;label class&#x3D;&quot;form-label&quot; for&#x3D;&quot;form1&quot;&gt;&lt;strong&gt;Personal asignado&lt;/strong&gt;&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;d-flex justify-content-center&quot;&gt;
+                                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;form1&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Id única de usuario&quot; /&gt;
+                                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;&lt;i-bs name&#x3D;&quot;person-plus-fill&quot; width&#x3D;&quot;75&quot;
+                                        height&#x3D;&quot;20&quot;&gt;&lt;/i-bs&gt;&lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;my-custom-scrollbar mt-2 &quot;&gt;
+                                &lt;div *ngFor&#x3D;&quot;let workerName of assignedWorkersList&quot; class&#x3D;&quot;border-bottom row mt-2 mb-0&quot;&gt;
+                                    &lt;div class&#x3D;&quot;col-8&quot;&gt;
+                                        {{workerName}}
+                                    &lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;col-4&quot;&gt;
+                                        &lt;button class&#x3D;&quot;btn btn-sm btn-warning p-2&quot; type&#x3D;&quot;button&quot;&gt;
+                                            &lt;i-bs name&#x3D;&quot;person-dash-fill&quot; width&#x3D;&quot;75&quot; height&#x3D;&quot;20&quot;&gt;&lt;/i-bs&gt;
+                                        &lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-1&quot;&gt;&lt;/div&gt;
+                &lt;div class&#x3D;&quot;big-selector col-2 py-4&quot;&gt;
+                    &lt;div class&#x3D;&quot;row&quot;&gt;
+                        &lt;div class&#x3D;&quot;col btn-cont&quot;&gt;
+                            &lt;button class&#x3D;&quot;btn btn-lg btn-primary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;saveChanges()&quot;[disabled]&#x3D;&quot;form.invalid&quot;&gt;
+                                Guardar cambios
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;row mt-5&quot;&gt;
+                        &lt;div class&#x3D;&quot;col btn-cont&quot;&gt;
+                            &lt;button class&#x3D;&quot;btn btn-lg btn-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;navigateToTaskManager()&quot;&gt;
+                                Cancelar modificaciones
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;row mt-5&quot;&gt;
+                        &lt;div class&#x3D;&quot;col btn-cont&quot;&gt;
+                            &lt;button class&#x3D;&quot;btn btn-lg btn-danger&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;deleteActivity()&quot;&gt;
+                                Eliminar actividad
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;table class&#x3D;&quot;table&quot;&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Autor&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Contenido&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Estado&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Fecha de creación&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+
+            &lt;tbody&gt;
+                &lt;tr
+                    *ngFor&#x3D;&quot;let comment of commentList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser &#x3D; index&quot;&gt;
+                    &lt;td&gt;{{ getUserName(comment.userId) }}&lt;/td&gt;
+                    &lt;td&gt;{{comment.content}}&lt;/td&gt;
+                    &lt;td&gt;{{comment.status}}&lt;/td&gt;
+                    &lt;td&gt;{{comment.date}}&lt;/td&gt;
+                    &lt;td&gt;&lt;button *ngIf&#x3D;&quot;comment.userId &#x3D;&#x3D;&#x3D; userId&quot; class&#x3D;&quot;btn btn-danger btn-sm&quot;
+                            (click)&#x3D;&quot;deleteComment(comment)&quot;&gt;Eliminar&lt;/button&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+
+                &lt;tr *ngIf&#x3D;&quot;commentList[&#x27;length&#x27;] &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+                    &lt;td colspan&#x3D;&quot;5&quot;&gt;No existen comentarios en las tareas a las que está asociada.&lt;/td&gt;
+                &lt;/tr&gt;
+
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;mat-paginator *ngIf&#x3D;&quot;page.length &gt; 10&quot; (page)&#x3D;&quot;page &#x3D; $event&quot; [length]&#x3D;&quot;page.length&quot; [pageSize]&#x3D;&quot;page.pageSize&quot;
+            [pageSizeOptions]&#x3D;&quot;[10]&quot; [showFirstLastButtons]&#x3D;&quot;true&quot; [hidePageSize]&#x3D;&quot;true&quot; aria-label&#x3D;&quot;Select page&quot;&gt;
+        &lt;/mat-paginator&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./taskModifier.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.container-fluid {
+    width: auto;
+    min-height: 80vh;
+    margin: 0rem 2rem;
+  }
+  
+  .activity-container {
+    background-color: var(--light-color);
+    border: 0px;
+  }
+  
+  .big-selector{
+    background-color: var(--light-color);
+    border-color: var(--dark-color);
+  }
+  
+  .my-custom-scrollbar {
+    position: relative;
+    height: 275px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+    display: block;
+  }
+  
+  .col-2 {
+    top: 0;
+    position: relative;
+    text-align: center;
+  }
+  
+  .btn-lg {
+    width: 100%;
+  }
+  
+  //Disposición de celular
+  @media screen and (max-width: 39.9375em) and (orientation: portrait) {
+    .activity-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .main-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+  
+      .big-selector {
+        width: 100% !important;
+      }
+    }
+  }
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid py-2">    <div class="row px-2">        <div class="col">            <h1>Modificar información de la tarea</h1>        </div>    </div>    <form (ngSubmit)="saveChanges()" [formGroup]="form">        <div class="activity-container card">            <div class="row main-row">                <div class="col-4 py-4">                    <div class="big-selector m-2">                            <div class="bordered-container m-2">                                <p><strong>Proyecto: {{projectItem.name}}</strong></p>                            </div>                            <div class="form-group bordered-container m-2">                                <p><strong>Nombre de la tarea</strong></p>                                <textarea class="form-control" id="task-name" rows="1" [(ngModel)]="taskItem.name" formControlName="name">{{projectItem.name}}</textarea>                            </div>                            <div class="form-group bordered-container m-2">                                <p><strong>Descripción</strong></p>                                <textarea class="form-control" id="task-description" rows="10" [(ngModel)]="taskItem.description" formControlName="description">{{projectItem.description}}</textarea>                            </div>                            <div class="form-group bordered-container m-2">                                <p><strong>Fecha de revisión</strong></p>                                <input class="form-control" type="string" id="start-date" name="start-date" placeholder={{taskItem.deadline}}                                    onfocus="(this.type=\'date\')" [(ngModel)]="taskItem.deadline" formControlName="deadline">                            </div>                    </div>                </div>                <div class="col-4 py-4">                    <div class="big-selector m-2">                        <div class="form-group bordered-container rounded">                            <label class="form-label" for="form1"><strong>Personal asignado</strong></label>                            <div class="d-flex justify-content-center">                                <input type="text" id="form1" class="form-control" placeholder="Id única de usuario" />                                <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75"                                        height="20"></i-bs></button>                            </div>                            <div class="my-custom-scrollbar mt-2 ">                                <div *ngFor="let workerName of assignedWorkersList" class="border-bottom row mt-2 mb-0">                                    <div class="col-8">                                        {{workerName}}                                    </div>                                    <div class="col-4">                                        <button class="btn btn-sm btn-warning p-2" type="button">                                            <i-bs name="person-dash-fill" width="75" height="20"></i-bs>                                        </button>                                    </div>                                </div>                            </div>                        </div>                    </div>                </div>                <div class="col-1"></div>                <div class="big-selector col-2 py-4">                    <div class="row">                        <div class="col btn-cont">                            <button class="btn btn-lg btn-primary" type="button" (click)="saveChanges()"[disabled]="form.invalid">                                Guardar cambios                            </button>                        </div>                    </div>                    <div class="row mt-5">                        <div class="col btn-cont">                            <button class="btn btn-lg btn-secondary" type="button" (click)="navigateToTaskManager()">                                Cancelar modificaciones                            </button>                        </div>                    </div>                    <div class="row mt-5">                        <div class="col btn-cont">                            <button class="btn btn-lg btn-danger" type="button" (click)="deleteActivity()">                                Eliminar actividad                            </button>                        </div>                    </div>                </div>            </div>        </div>    </form>    <div class="row">        <table class="table">            <thead>                <tr>                    <th scope="col">Autor</th>                    <th scope="col">Contenido</th>                    <th scope="col">Estado</th>                    <th scope="col">Fecha de creación</th>                    <th scope="col"></th>                    <th scope="col"></th>                </tr>            </thead>            <tbody>                <tr                    *ngFor="let comment of commentList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">                    <td>{{ getUserName(comment.userId) }}</td>                    <td>{{comment.content}}</td>                    <td>{{comment.status}}</td>                    <td>{{comment.date}}</td>                    <td><button *ngIf="comment.userId === userId" class="btn btn-danger btn-sm"                            (click)="deleteComment(comment)">Eliminar</button></td>                </tr>                <tr *ngIf="commentList[\'length\'] === 0">                    <td colspan="5">No existen comentarios en las tareas a las que está asociada.</td>                </tr>            </tbody>        </table>        <mat-paginator *ngIf="page.length > 10" (page)="page = $event" [length]="page.length" [pageSize]="page.pageSize"            [pageSizeOptions]="[10]" [showFirstLastButtons]="true" [hidePageSize]="true" aria-label="Select page">        </mat-paginator>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-aboutUs'},{'name': 'AccountSettingsComponent', 'selector': 'app-accountSettings'},{'name': 'AdminLandpageComponent', 'selector': 'app-landpage'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProjectCreatorComponent', 'selector': 'app-projectCreator'},{'name': 'ProjectItemComponent', 'selector': 'app-projectItem'},{'name': 'ProjectModifierComponent', 'selector': 'app-project-modifier'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SupportComponent', 'selector': 'app-support'},{'name': 'TaskArchiveComponent', 'selector': 'app-taskArchive'},{'name': 'TaskCreatorComponent', 'selector': 'app-taskCreator'},{'name': 'TaskDetailsComponent', 'selector': 'app-taskDetails'},{'name': 'TaskItemComponent', 'selector': 'app-taskItem'},{'name': 'TaskManagerComponent', 'selector': 'app-taskManager'},{'name': 'TaskModifierComponent', 'selector': 'app-taskModifier'},{'name': 'UserLandpageComponent', 'selector': 'app-user-landpage'},{'name': 'UserManagerComponent', 'selector': 'app-userManager'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TaskModifierComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TaskModifierComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
