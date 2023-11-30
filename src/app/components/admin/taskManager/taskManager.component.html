@@ -8,18 +8,22 @@
   <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <button class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></button>
-        <input type="text" class="form-control" placeholder="Nombre de la tarea">
+        <a (click)="filterByTaskName()" class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></a>
+        <input type="text" class="form-control" [(ngModel)]="searchTaskName" placeholder="Nombre de la tarea">
       </div>
     </div>
   </div>
   <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <button class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></button>
-        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha mínima">
-        <span class="arrow-icon input-group-text " id="basic-addon1"><i-bs name="arrow-right-short" width="30" height="30"></i-bs></span>
-        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha máxima">
+        <a (click)="filterByDate()" class="search-icon input-group-text btn" id="basic-addon1">
+          <i-bs name="search" width="75" height="20"></i-bs>
+        </a>
+        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="minDate" placeholder="Fecha mínima (yyyy-MM-dd)">
+        <span class="arrow-icon input-group-text" id="basic-addon1">
+          <i-bs name="arrow-right-short" width="30" height="30"></i-bs>
+        </span>
+        <input type="text" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="maxDate" placeholder="Fecha máxima (yyyy-MM-dd)">
       </div>
     </div>
   </div>
@@ -31,7 +35,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Task ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripción</th>
             <th scope="col">Fecha de entrega</th>
@@ -40,7 +44,7 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let activity of taskList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+          <tr *ngFor="let activity of filteredTaskList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
             <td>{{activity['taskId']}}</td>
             <td>{{activity['name']}}</td>
             <td>{{activity['description']}}</td>
@@ -62,5 +66,11 @@
         <button class="btn btn-primary btn-lg" onclick="location.href='/admin-task-creator'">Crear nueva actividad</button>
       </div>
     </div>
+  </div>
+  <div>
+    <a (click)="generateExcel()" class="btn btn-secondary mt-2" id="basic-addon1">Descargar copia las tareas asociadas en XLSX</a>
+  </div>
+  <div>
+    <a (click)="generatePdf()" class="btn btn-secondary mt-2" id="basic-addon1">Descargar copia de las tareas asociadas en PDF</a>
   </div>
 </div>

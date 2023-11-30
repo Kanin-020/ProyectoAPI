@@ -8,8 +8,8 @@
   <div class="row mt-2">
     <div class="col">
       <div class="input-group">
-        <button class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></button>
-        <input type="text" class="form-control" placeholder="Nombre del usuario">
+        <a (click)="filterByUserName()" class="search-icon input-group-text btn" id="basic-addon1"><i-bs name="search" width="75" height="20"></i-bs></a>
+        <input type="text" class="form-control" [(ngModel)]="searchUserName" placeholder="Nombre del usuario">
       </div>
     </div>
   </div>
@@ -22,7 +22,6 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Email</th>
-            <th scope="col">Contraseña</th>
             <th scope="col">Rol</th>
             <th scope="col">Fecha de creación</th>
             <th scope="col">Último login</th>
@@ -31,17 +30,16 @@
 
         <tbody>
           <tr
-            *ngFor="let user of users | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
+            *ngFor="let user of filteredUserList | paginate: {itemsPerPage: page.pageSize, currentPage: (page.pageIndex +1)}; let indexUser = index">
             <td>{{user['userId']}}</td>
             <td>{{user['name']}}</td>
             <td>{{user['email']}}</td>
-            <td>{{user['password']}}</td>
             <td>{{user['role']}}</td>
             <td>{{user['creationDate']}}</td>
             <td>{{user['lastLoginDate']}}</td>
           </tr>
 
-          <tr *ngIf="users['length'] === 0">
+          <tr *ngIf="filteredUserList['length'] === 0">
             <td colspan="5">No existen usuarios asociados a este proyecto.</td>
           </tr>
 
@@ -55,5 +53,11 @@
       </mat-paginator>
 
     </div>
+  </div>
+  <div>
+    <a (click)="generateExcel()" class="btn btn-secondary mt-2" id="basic-addon1">Descargar copia del directorio en XLSX</a>
+  </div>
+  <div>
+    <a (click)="generatePdf()" class="btn btn-secondary mt-2" id="basic-addon1">Descargar copia del directorio en PDF</a>
   </div>
 </div>

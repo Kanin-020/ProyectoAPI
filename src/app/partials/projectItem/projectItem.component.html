@@ -1,13 +1,16 @@
 <div class="card border-2">
-  <h5 class="card-header border-2">{{projectItem.name}}</h5>
+  <h5 class="card-header border-2 text-center">{{projectItem.name}}</h5>
   <div class="card-body border-2">
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{projectItem.projectId}}</h6>
-    <p class="card-text">{{projectItem.description}}</p>
+    <h6 class="card-subtitle mb-2 text-body-secondary text-center">{{projectItem.id}}</h6>
+    <p class="card-text text-center">{{projectItem.description}}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{projectItem.creationDate}} - {{projectItem.deadline}}</li>
-    <li class="list-group-item">{{projectItem.status}}</li>
+    <li class="list-group-item text-center">Fecha de creación: {{projectItem.creationDate}}</li>
+    <li class="list-group-item text-center">Fecha de finalización: {{projectItem.deadline}}</li>
   </ul>
+  <div class="card-footer border-2 d-flex justify-content-center">
+    <strong class="text-center">{{projectItem.status}}</strong>
+  </div>
   <div class="card-footer border-2 d-flex justify-content-center">
     <a (click)="openProject()" class="btn btn-primary">Seleccionar Proyecto</a>
   </div>

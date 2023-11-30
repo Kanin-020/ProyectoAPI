@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/api/user.service';
 export class ProjectModifierComponent implements OnInit {
 
   projectId: number = 0;
-  projectName: string = "Proyecto de ejemplo";
+  projectName: string = "Placeholder name";
 
   projectItem: Project = {
     projectId: 0,
@@ -78,6 +78,7 @@ export class ProjectModifierComponent implements OnInit {
       deadline: new FormControl(this.projectItem.deadline, Validators.required),
       userId: new FormControl(this.addedUserId),
     });
+
 
   }
 

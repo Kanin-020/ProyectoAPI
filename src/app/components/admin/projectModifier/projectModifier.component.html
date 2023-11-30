@@ -19,8 +19,8 @@
                     </div>
                     <div class="form-group bordered-container m-2">
                         <p><strong>Estado</strong></p>
-                        <select id="Select" class="form-select" [(ngModel)]="projectItem.status">
-                            <option value="En proceso">En proceso</option>
+                        <select id="Select" class="form-select" formControlName="status" [(ngModel)]="projectItem.status">
+                            <option value="En proceso">Activo</option>
                             <option value="En hiatus">En hiatus</option>
                             <option value="Finalizado">Finalizado</option>
                         </select>
@@ -34,15 +34,15 @@
             <div class="col-4 py-4">
                 <div class="big-selector m-2">
                     <div class="form-group bordered-container rounded">
-                        <label class="form-label" for="form1"><strong>Personal asignado</strong></label>
+                        <label class="form-label" for="form1"><strong>Personal asignado - ID</strong></label>
                         <div class="d-flex justify-content-center">
-                            <input type="text" id="form1" class="form-control" placeholder="Id única de usuario" [(ngModel)]="addedUserId"/>
+                            <input type="text" id="form1" class="form-control" [attr.placeholder]="addedUserId ? '' : 'Id única de usuario'" [(ngModel)]="addedUserId"/>
                             <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75" height="20" (click)="addUsersToProject()"></i-bs></button>
                         </div>
                         <div class="my-custom-scrollbar mt-2 ">
                             <div class="border-bottom row mt-2 mb-0" *ngFor="let user of assignedUsersList">
                                 <div class="col-8" >
-                                    {{user.name}}
+                                    {{user.name}} - {{user.userId}}
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-sm btn-warning p-2" type="button" >
