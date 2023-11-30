@@ -40,7 +40,7 @@ export class TaskManagerComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private relationsProjectsService: RelationsProjectsService,
     private excelService: ExcelService,
     private pdfService: PdfService,
@@ -148,6 +148,13 @@ export class TaskManagerComponent implements OnInit {
   }
 
   /**
+  * Redirecciona a la pagina para crear una tarea.
+  */
+  openCreator() {
+    this.router.navigate(['/admin-task-creator', this.projectId]);
+  }
+
+  /**
   * Envía datos al servicio de excel para imprimir los datos de las tareass asociadas al proyecto.
   */
   generateExcel(): void {
@@ -164,7 +171,7 @@ export class TaskManagerComponent implements OnInit {
   generatePdf(): void {
     var txt = 'Tareas en el proyecto: ' + this.projectTitle + '\n\n';
     this.fullFilTaskList.forEach( (element) => {
-      txt = txt 
+      txt = txt
       + 'Tarea: ' + element.taskId + '-' + element.name + '\n'
       + 'Descripción: ' + element.description + '\n'
       + 'Fecha de creación: ' + element.creationDate + '\n'

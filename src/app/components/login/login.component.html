@@ -30,6 +30,22 @@
                     <label for="floatingPassword"></label>
                 </div>
 
+
+                <form class="pop-up card" [ngStyle]="{'display': popupVisualization}" (ngSubmit)="validateSecretKey()"
+                    [formGroup]="qrItem">
+
+                    <label>Ingresar código de verificación</label>
+
+                    <img [src]="imgSrc" alt="QR Code" class="qr-code">
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control" placeholder="Código de acceso" formControlName="key" [(ngModel)]="qrData.key"
+                            required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Ingresar</button>
+                </form>
+
+
                 <button class="w-100 btn btn-lg btn-primary" type="submit"
                     [disabled]="blockedFormFlag|| formItem.invalid">Iniciar
                     Sesión</button>

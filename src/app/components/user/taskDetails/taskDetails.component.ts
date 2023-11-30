@@ -5,13 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/api/task.service';
 import { ProjectService } from 'src/app/services/api/project.service';
 import { CommentService } from 'src/app/services/api/comment.service';
-import {
-  Project,
-  Task,
-  Comment,
-  User,
-  Relation,
-} from 'src/app/interfaces/interfaces';
+import { Project, Task, Comment, User, Relation, } from 'src/app/interfaces/interfaces';
 import { UserService } from 'src/app/services/api/user.service';
 import { forkJoin } from 'rxjs';
 import { RelationsCommentsService } from 'src/app/services/api/relationsComments.service';

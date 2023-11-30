@@ -4,65 +4,72 @@
         <h1>Crear tarea</h1>
       </div>
     </div>
-  
-    <div class="activity-container card ">
-        <div class="row main-row">
-            <div class="col-4 py-4">
-                <div class="big-selector m-2">
-                    <div class="form-group bordered-container m-2">
-                        <p><strong>Nombre de la tarea</strong></p>
-                        <textarea class="form-control" id="task-name" rows="1"></textarea>
-                    </div>
-                    <div class="form-group bordered-container m-2">
-                        <p><strong>Descripción</strong></p>
-                      <textarea class="form-control" id="task-description" rows="10"></textarea>
-                    </div>
-                    <div class="form-group bordered-container m-2">
-                      <p><strong>Fecha de revisión</strong></p>
-                      <input type="date" id="start-date" name="start-date">
+    <form (ngSubmit)="saveChanges()" [formGroup]="form">
+        <div class="activity-container card">
+            <div class="row main-row">
+                <div class="col-4 py-4">
+                    <div class="big-selector m-2">
+                            <div class="bordered-container m-2">
+                                <p><strong>Proyecto: {{projectId}}</strong></p>
+                            </div>
+                            <div class="form-group bordered-container m-2">
+                                <p><strong>Nombre de la tarea</strong></p>
+                                <textarea class="form-control" id="task-name" rows="1" [(ngModel)]="taskItem.name" formControlName="name">{{projectItem.name}}</textarea>
+                            </div>
+                            <div class="form-group bordered-container m-2">
+                                <p><strong>Descripción</strong></p>
+                                <textarea class="form-control" id="task-description" rows="10" [(ngModel)]="taskItem.description" formControlName="description">{{projectItem.description}}</textarea>
+                            </div>
+                            <div class="form-group bordered-container m-2">
+                                <p><strong>Fecha de revisión</strong></p>
+                                <input class="form-control" type="string" id="start-date" name="start-date" placeholder={{taskItem.deadline}}
+                                    onfocus="(this.type='date')" [(ngModel)]="taskItem.deadline" formControlName="deadline">
+                            </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-4 py-4">
-                <div class="big-selector m-2">
-                    <div class="form-group bordered-container rounded">
-                        <label class="form-label" for="form1"><strong>Personal asignado</strong></label>
-                        <div class="d-flex justify-content-center">
-                            <input type="text" id="form1" class="form-control" placeholder="Id única de usuario"/>
-                            <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75" height="20"></i-bs></button>
-                        </div>
-                        <div class="my-custom-scrollbar mt-2 ">
-                            <div class="border-bottom row mt-2 mb-0">
-                                <div class="col-8">
-                                    Trabajador x
-                                </div>
-                                <div class="col-4">
-                                    <button class="btn btn-sm btn-warning p-2" type="button" >
-                                        <i-bs name="person-dash-fill" width="75" height="20"></i-bs>
-                                    </button>
+                <div class="col-4 py-4">
+                    <div class="big-selector m-2">
+                        <div class="form-group bordered-container rounded">
+                            <label class="form-label" for="form1"><strong>Personal asignado</strong></label>
+                            <div class="d-flex justify-content-center">
+                                <input type="text" id="form1" class="form-control" placeholder="Id única de usuario" />
+                                <button type="button" class="btn btn-primary"><i-bs name="person-plus-fill" width="75"
+                                        height="20"></i-bs></button>
+                            </div>
+                            <div class="my-custom-scrollbar mt-2 ">
+                                <div *ngFor="let workerName of assignedWorkersList" class="border-bottom row mt-2 mb-0">
+                                    <div class="col-8">
+                                        {{workerName}}
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-sm btn-warning p-2" type="button">
+                                            <i-bs name="person-dash-fill" width="75" height="20"></i-bs>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-1"></div><div class="big-selector col-2 py-4">
-                <div class="row">
-                    <div class="col btn-cont">
-                        <button class="btn btn-lg btn-primary" type="button" onclick="location.href='/admin-task-manager'">
-                          Crear actividad
-                        </button>
+                <div class="col-1"></div>
+                <div class="big-selector col-2 py-4">
+                    <div class="row">
+                        <div class="col btn-cont">
+                            <button class="btn btn-lg btn-primary" type="button" (click)="saveChanges()"[disabled]="form.invalid">
+                                Crear actividad
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col btn-cont">
-                        <button class="btn btn-lg btn-secondary" type="button" onclick="location.href='/admin-task-manager'">
-                          Cancelar 
-                        </button>
+                    <div class="row mt-5">
+                        <div class="col btn-cont">
+                            <button class="btn btn-lg btn-secondary" type="button" (click)="discardCreation()">
+                                Cancelar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  </div>
+    </form>
+</div>

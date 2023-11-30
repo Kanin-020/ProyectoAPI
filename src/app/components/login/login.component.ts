@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionGuard } from 'src/app/guards/session.guard';
 import { UserService } from 'src/app/services/api/user.service';
+import * as QRCode from 'qrcode';
+
 
 
 @Component({
@@ -13,10 +15,21 @@ import { UserService } from 'src/app/services/api/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  imgSrc: string = '';
+
+  secretKey: string = '';
+
+  popupVisualization: string = 'none';
+
   userData: any = {};
+  qrData: any = {};
+
   formItem!: FormGroup;
+  qrItem!: FormGroup;
+
   invalidSessionCounter: number = 0;
   blockedFormFlag: boolean = false;
+  QRCode = QRCode;
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -34,6 +47,12 @@ export class LoginComponent implements OnInit {
       password: new FormControl(this.userData.password, Validators.required),
     });
 
+    this.qrItem = new FormGroup({
+      key: new FormControl(this.qrData.key, Validators.required)
+    });
+
+
+
   }
 
   /**
@@ -41,12 +60,12 @@ export class LoginComponent implements OnInit {
    * 123 = Iniciar sesión como usuario.
    * 456 = Iniciar sesión como administrador.
    */
-  login() {
+  async login() {
 
     const { email, password } = this.userData;
 
     this.userService.login(email, password).subscribe(
-      (response: any) => {
+      async (response: any) => {
 
         if (response.ok == true) {
 
@@ -58,7 +77,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', role);
           localStorage.setItem('token', token);
 
-          this.startSession(role);
+          this.showQRPopup();
 
           this.invalidSessionCounter = 0;
 
@@ -76,7 +95,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  startSession(role: string) {
+  async startSession(role: string) {
     if (role == 'trabajador') {
       this.router.navigate(['/user-landpage']);
 
@@ -112,6 +131,56 @@ export class LoginComponent implements OnInit {
 
   enableForm() {
     this.blockedFormFlag = false;
+  }
+
+
+
+  showQRPopup() {
+
+    this.generateQR();
+    this.popupVisualization = 'flex';
+  }
+
+  generateQR() {
+
+    const key = this.generateQRKey();
+
+    this.secretKey = key;
+
+    this.QRCode.toDataURL(key, (error: any, url: any) => {
+      if (error) {
+        console.error(error);
+      } else {
+        this.imgSrc = url;
+      }
+    });
+
+  }
+
+  generateQRKey() {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    const length = 4;
+    let word = '';
+
+    for (let i = 0; i < length; i++) {
+      const index = Math.floor(Math.random() * alphabet.length);
+      word += alphabet.charAt(index);
+    }
+
+    return word;
+  }
+
+  validateSecretKey() {
+
+    const { key } = this.qrData;
+
+    if (key == this.secretKey) {
+      const role = localStorage.getItem('role') || '';
+      this.startSession(role);
+    } else {
+      this.generateQR();
+    }
+
   }
 
 }
